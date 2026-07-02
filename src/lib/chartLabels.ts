@@ -1,0 +1,15 @@
+export const chartAxisTitles = {
+  country: 'Country',
+  income: 'World Bank income group',
+  setting: 'Setting classification',
+  spar: 'SPAR composite score (0–100)',
+  capacityScore: 'SPAR capacity score (0–100)',
+  capacityDomain: 'Capacity domain',
+  spending: 'Current health expenditure per capita (current US$, logarithmic scale)',
+  displacedPeople: 'Reported displaced people present (people, logarithmic scale)',
+  displacedShare: 'Reported displaced people present (% of national population)',
+  referenceYear: 'Reference year',
+  regionalTrend: 'Median SPAR composite score (0–100)',
+  capacityGap: 'Difference from regional median (SPAR points)',
+  contextIndex: 'Country value index (regional median = 100)',
+} as const

@@ -1,0 +1,2834 @@
+{
+ "meta": {
+  "generated": "2026-07-01",
+  "last_successful_refresh": "2026-07-01T20:42:32Z",
+  "schema_version": "3.0.0",
+  "displacement_year": 2025,
+  "sources": [
+   "WHO GHO (SDGIHR2021, IHRSPAR2)",
+   "World Bank Open Data",
+   "UNHCR Refugee Statistics"
+  ],
+  "source_refresh": {
+   "who_composite": {
+    "endpoint": "https://ghoapi.azureedge.net/api/SDGIHR2021",
+    "status": "success",
+    "retrieved_at": "2026-07-01T20:42:32Z",
+    "coverage": 21,
+    "reference_year": "2024–2025"
+   },
+   "who_capacities": {
+    "endpoint": "https://ghoapi.azureedge.net/api/IHRSPAR2_C02..C15",
+    "status": "success",
+    "retrieved_at": "2026-07-01T20:42:32Z",
+    "coverage": 20,
+    "reference_year": "2023"
+   },
+   "world_bank": {
+    "endpoint": "https://api.worldbank.org/v2/",
+    "status": "success",
+    "retrieved_at": "2026-07-01T20:42:32Z",
+    "coverage": 21,
+    "reference_year": "2017–2025"
+   },
+   "unhcr": {
+    "endpoint": "https://api.unhcr.org/population/v1/population/",
+    "status": "success",
+    "retrieved_at": "2026-07-01T20:42:32Z",
+    "coverage": 20,
+    "reference_year": 2025
+   },
+   "conflict_classification": {
+    "endpoint": "World Bank FY25 FCS list (versioned repository classification)",
+    "status": "static",
+    "retrieved_at": "2026-07-01T20:42:32Z",
+    "coverage": 21,
+    "reference_year": "FY25"
+   }
+  },
+  "capacity_order": [
+   "IHR Coordination",
+   "Financing",
+   "Laboratory",
+   "Surveillance",
+   "Human Resources",
+   "Health Emergency Mgmt",
+   "Health Services",
+   "Infection Prevention & Control",
+   "Risk Communication",
+   "Points of Entry",
+   "Zoonotic Diseases",
+   "Food Safety",
+   "Chemical Events",
+   "Radiation Emergencies"
+  ],
+  "indicator_definitions": [
+   {
+    "key": "beds",
+    "label": "Hospital beds",
+    "definition": "Hospital beds reported by the World Bank.",
+    "unit": "per 1,000 people",
+    "source_code": "SH.MED.BEDS.ZS",
+    "source": "World Bank",
+    "scale": "nonnegative",
+    "direction": "Higher availability is not a measure of readiness or quality.",
+    "context_selector": true
+   },
+   {
+    "key": "physicians",
+    "label": "Physicians",
+    "definition": "Physicians reported by the World Bank.",
+    "unit": "per 1,000 people",
+    "source_code": "SH.MED.PHYS.ZS",
+    "source": "World Bank",
+    "scale": "nonnegative",
+    "direction": "Higher values indicate greater reported workforce availability.",
+    "context_selector": true
+   },
+   {
+    "key": "nurses",
+    "label": "Nurses and midwives",
+    "definition": "Nurses and midwives reported by the World Bank.",
+    "unit": "per 1,000 people",
+    "source_code": "SH.MED.NUMW.P3",
+    "source": "World Bank",
+    "scale": "nonnegative",
+    "direction": "Higher values indicate greater reported workforce availability.",
+    "context_selector": true
+   },
+   {
+    "key": "health_exp_gdp",
+    "label": "Current health expenditure",
+    "definition": "Current health expenditure reported by the World Bank.",
+    "unit": "% of GDP",
+    "source_code": "SH.XPD.CHEX.GD.ZS",
+    "source": "World Bank",
+    "scale": "percentage",
+    "direction": "Higher values are not inherently favourable.",
+    "context_selector": false
+   },
+   {
+    "key": "health_exp_pc",
+    "label": "Current health expenditure per capita",
+    "definition": "Current health expenditure per capita reported by the World Bank.",
+    "unit": "current US$ per person",
+    "source_code": "SH.XPD.CHEX.PC.CD",
+    "source": "World Bank",
+    "scale": "nonnegative",
+    "direction": "Higher spending is not inherently more efficient or effective.",
+    "context_selector": false
+   },
+   {
+    "key": "oop",
+    "label": "Out-of-pocket expenditure",
+    "definition": "Out-of-pocket expenditure reported by the World Bank.",
+    "unit": "% of current health expenditure",
+    "source_code": "SH.XPD.OOPC.CH.ZS",
+    "source": "World Bank",
+    "scale": "percentage",
+    "direction": "Lower values may indicate stronger financial protection; context matters.",
+    "context_selector": false
+   },
+   {
+    "key": "imm_measles",
+    "label": "Measles immunization",
+    "definition": "Measles immunization reported by the World Bank.",
+    "unit": "% of eligible children",
+    "source_code": "SH.IMM.MEAS",
+    "source": "World Bank",
+    "scale": "percentage",
+    "direction": "Higher coverage is generally favourable.",
+    "context_selector": true
+   },
+   {
+    "key": "imm_dpt",
+    "label": "DPT immunization",
+    "definition": "DPT immunization reported by the World Bank.",
+    "unit": "% of eligible children",
+    "source_code": "SH.IMM.IDPT",
+    "source": "World Bank",
+    "scale": "percentage",
+    "direction": "Higher coverage is generally favourable.",
+    "context_selector": true
+   },
+   {
+    "key": "water",
+    "label": "Safely managed drinking water",
+    "definition": "Safely managed drinking water reported by the World Bank.",
+    "unit": "% of population",
+    "source_code": "SH.H2O.SMDW.ZS",
+    "source": "World Bank",
+    "scale": "percentage",
+    "direction": "Higher service coverage is generally favourable.",
+    "context_selector": true
+   },
+   {
+    "key": "sanitation",
+    "label": "Safely managed sanitation",
+    "definition": "Safely managed sanitation reported by the World Bank.",
+    "unit": "% of population",
+    "source_code": "SH.STA.SMSS.ZS",
+    "source": "World Bank",
+    "scale": "percentage",
+    "direction": "Higher service coverage is generally favourable.",
+    "context_selector": true
+   },
+   {
+    "key": "life_exp",
+    "label": "Life expectancy at birth",
+    "definition": "Life expectancy at birth reported by the World Bank.",
+    "unit": "years",
+    "source_code": "SP.DYN.LE00.IN",
+    "source": "World Bank",
+    "scale": "nonnegative",
+    "direction": "Higher values are generally favourable but are not a preparedness measure.",
+    "context_selector": true
+   },
+   {
+    "key": "u5mort",
+    "label": "Under-five mortality",
+    "definition": "Under-five mortality reported by the World Bank.",
+    "unit": "deaths per 1,000 live births",
+    "source_code": "SH.DYN.MORT",
+    "source": "World Bank",
+    "scale": "nonnegative",
+    "direction": "Lower values are generally favourable; interpret direction accordingly.",
+    "context_selector": true
+   }
+  ],
+  "fcs_note": "World Bank FY25 Fragile & Conflict-affected Situations list",
+  "region_median": 76,
+  "region_mean": 68.8,
+  "capacity_median": {
+   "IHR Coordination": 70,
+   "Financing": 70,
+   "Laboratory": 82,
+   "Surveillance": 95,
+   "Human Resources": 60,
+   "Health Emergency Mgmt": 80,
+   "Health Services": 80,
+   "Infection Prevention & Control": 56.5,
+   "Risk Communication": 80,
+   "Points of Entry": 76.5,
+   "Zoonotic Diseases": 80,
+   "Food Safety": 70,
+   "Chemical Events": 60,
+   "Radiation Emergencies": 70
+  },
+  "context_median": {
+   "beds": 1.41,
+   "health_exp_gdp": 4.97095108,
+   "health_exp_pc": 317.70983887,
+   "imm_dpt": 96,
+   "imm_measles": 96,
+   "life_exp": 76.475,
+   "nurses": 2.5780000000000003,
+   "oop": 34.4679451,
+   "physicians": 1.7355,
+   "population": 12348573,
+   "sanitation": 62.4937976717106,
+   "u5mort": 15.7,
+   "water": 84.79615786643944
+  },
+  "n_countries": 21,
+  "n_conflict": 8,
+  "n_below60": 7
+ },
+ "countries": [
+  {
+   "iso3": "DZA",
+   "name": "Algeria",
+   "conflict": false,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 77
+    },
+    {
+     "year": 2022,
+     "value": 72
+    },
+    {
+     "year": 2023,
+     "value": 72.3
+    },
+    {
+     "year": 2024,
+     "value": 80
+    },
+    {
+     "year": 2025,
+     "value": 80
+    }
+   ],
+   "ihr_composite": 80,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 70,
+    "IHR Coordination": 67,
+    "Financing": 90,
+    "Laboratory": 68,
+    "Surveillance": 90,
+    "Human Resources": 80,
+    "Health Emergency Mgmt": 80,
+    "Health Services": 80,
+    "Infection Prevention & Control": 60,
+    "Risk Communication": 80,
+    "Points of Entry": 80,
+    "Zoonotic Diseases": 80,
+    "Food Safety": 40,
+    "Chemical Events": 60,
+    "Radiation Emergencies": 60
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 1.61,
+     "year": 2017
+    },
+    "physicians": {
+     "value": 1.66,
+     "year": 2022
+    },
+    "nurses": {
+     "value": 2.508,
+     "year": 2022
+    },
+    "health_exp_gdp": {
+     "value": 4.35082531,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 233.37947083,
+     "year": 2023
+    },
+    "oop": {
+     "value": 45.00216675,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 94,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 92,
+     "year": 2024
+    },
+    "water": {
+     "value": 69.0291825248964,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 62.4937976717106,
+     "year": 2024
+    },
+    "population": {
+     "value": 47435312,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 76.475,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 21.6,
+     "year": 2024
+    }
+   },
+   "income": "Upper middle income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 180575,
+    "asylum_seekers": 3690,
+    "idps": 0,
+    "stateless": 0,
+    "returned": 0
+   },
+   "rank": 8
+  },
+  {
+   "iso3": "BHR",
+   "name": "Bahrain",
+   "conflict": false,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 80
+    },
+    {
+     "year": 2022,
+     "value": 84
+    },
+    {
+     "year": 2023,
+     "value": 86.1
+    },
+    {
+     "year": 2024,
+     "value": 92
+    },
+    {
+     "year": 2025,
+     "value": 92
+    }
+   ],
+   "ihr_composite": 92,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 100,
+    "IHR Coordination": 67,
+    "Financing": 100,
+    "Laboratory": 100,
+    "Surveillance": 100,
+    "Human Resources": 90,
+    "Health Emergency Mgmt": 87,
+    "Health Services": 100,
+    "Infection Prevention & Control": 80,
+    "Risk Communication": 87,
+    "Points of Entry": 100,
+    "Zoonotic Diseases": 80,
+    "Food Safety": 100,
+    "Chemical Events": 40,
+    "Radiation Emergencies": 60
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 1.84,
+     "year": 2022
+    },
+    "physicians": {
+     "value": 0.741,
+     "year": 2020
+    },
+    "nurses": {
+     "value": 2.648,
+     "year": 2020
+    },
+    "health_exp_gdp": {
+     "value": 3.99562383,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 1175.81628418,
+     "year": 2023
+    },
+    "oop": {
+     "value": 28.65578461,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 99,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 96,
+     "year": 2024
+    },
+    "water": {
+     "value": 98.9039755631804,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 93.3525990269566,
+     "year": 2024
+    },
+    "population": {
+     "value": 1600366,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 81.423,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 8.8,
+     "year": 2024
+    }
+   },
+   "income": "High income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 240,
+    "asylum_seekers": 122,
+    "idps": 0,
+    "stateless": 0,
+    "returned": 0
+   },
+   "rank": 4
+  },
+  {
+   "iso3": "EGY",
+   "name": "Egypt",
+   "conflict": false,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 86
+    },
+    {
+     "year": 2022,
+     "value": 87
+    },
+    {
+     "year": 2023,
+     "value": 90.7
+    },
+    {
+     "year": 2024,
+     "value": 90
+    },
+    {
+     "year": 2025,
+     "value": 91
+    }
+   ],
+   "ihr_composite": 91,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 90,
+    "IHR Coordination": 87,
+    "Financing": 100,
+    "Laboratory": 84,
+    "Surveillance": 100,
+    "Human Resources": 100,
+    "Health Emergency Mgmt": 100,
+    "Health Services": 100,
+    "Infection Prevention & Control": 80,
+    "Risk Communication": 80,
+    "Points of Entry": 100,
+    "Zoonotic Diseases": 80,
+    "Food Safety": 80,
+    "Chemical Events": 100,
+    "Radiation Emergencies": 80
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 1.06,
+     "year": 2021
+    },
+    "physicians": {
+     "value": 0.671,
+     "year": 2020
+    },
+    "nurses": {
+     "value": 1.794,
+     "year": 2018
+    },
+    "health_exp_gdp": {
+     "value": 4.88449335,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 141.41111755,
+     "year": 2023
+    },
+    "oop": {
+     "value": 57.19506836,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 97,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 97,
+     "year": 2024
+    },
+    "water": {
+     "value": 78.9401588327765,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 57.3358101507241,
+     "year": 2024
+    },
+    "population": {
+     "value": 118365995,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 71.806,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 22.4,
+     "year": 2024
+    }
+   },
+   "income": "Lower middle income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 220033,
+    "asylum_seekers": 878268,
+    "idps": 0,
+    "stateless": 5,
+    "returned": 431222
+   },
+   "rank": 6
+  },
+  {
+   "iso3": "IRN",
+   "name": "Iran",
+   "conflict": false,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 86
+    },
+    {
+     "year": 2022,
+     "value": 86
+    },
+    {
+     "year": 2023,
+     "value": 81.3
+    },
+    {
+     "year": 2024,
+     "value": 76
+    }
+   ],
+   "ihr_composite": 76,
+   "ihr_year": 2024,
+   "capacities": {
+    "Policy, Legal & Normative": 80,
+    "IHR Coordination": 93,
+    "Financing": 70,
+    "Laboratory": 96,
+    "Surveillance": 100,
+    "Human Resources": 80,
+    "Health Emergency Mgmt": 87,
+    "Health Services": 93,
+    "Infection Prevention & Control": 80,
+    "Risk Communication": 80,
+    "Points of Entry": 80,
+    "Zoonotic Diseases": 80,
+    "Food Safety": 80,
+    "Chemical Events": 60,
+    "Radiation Emergencies": 60
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 1.85,
+     "year": 2019
+    },
+    "physicians": {
+     "value": 1.811,
+     "year": 2023
+    },
+    "nurses": {
+     "value": 2.876,
+     "year": 2023
+    },
+    "health_exp_gdp": {
+     "value": 6.02542305,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 267.059021,
+     "year": 2023
+    },
+    "oop": {
+     "value": 43.14528656,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 99,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 98,
+     "year": 2024
+    },
+    "water": {
+     "value": 94.4122052108484,
+     "year": 2024
+    },
+    "population": {
+     "value": 92417681,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 77.854,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 11.3,
+     "year": 2024
+    }
+   },
+   "income": "Upper middle income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 770514,
+    "asylum_seekers": 0,
+    "idps": 0,
+    "stateless": 0,
+    "returned": 1386970
+   },
+   "rank": 10
+  },
+  {
+   "iso3": "IRQ",
+   "name": "Iraq",
+   "conflict": true,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 48
+    },
+    {
+     "year": 2022,
+     "value": 66
+    },
+    {
+     "year": 2023,
+     "value": 46.4
+    },
+    {
+     "year": 2024,
+     "value": 59
+    },
+    {
+     "year": 2025,
+     "value": 64
+    }
+   ],
+   "ihr_composite": 64,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 50,
+    "IHR Coordination": 60,
+    "Financing": 40,
+    "Laboratory": 60,
+    "Surveillance": 50,
+    "Human Resources": 30,
+    "Health Emergency Mgmt": 33,
+    "Health Services": 80,
+    "Infection Prevention & Control": 53,
+    "Risk Communication": 33,
+    "Points of Entry": 27,
+    "Zoonotic Diseases": 20,
+    "Food Safety": 40,
+    "Chemical Events": 60,
+    "Radiation Emergencies": 60
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 1.06,
+     "year": 2018
+    },
+    "physicians": {
+     "value": 1.022,
+     "year": 2022
+    },
+    "nurses": {
+     "value": 2.648,
+     "year": 2022
+    },
+    "health_exp_gdp": {
+     "value": 5.53275251,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 333.29360962,
+     "year": 2023
+    },
+    "oop": {
+     "value": 53.9823761,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 91,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 90,
+     "year": 2024
+    },
+    "water": {
+     "value": 59.8272461307615,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 50.8975045193032,
+     "year": 2024
+    },
+    "population": {
+     "value": 47020774,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 72.424,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 21.8,
+     "year": 2024
+    }
+   },
+   "income": "Upper middle income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 322345,
+    "asylum_seekers": 23366,
+    "idps": 997334,
+    "stateless": 233,
+    "returned": 65901
+   },
+   "rank": 14
+  },
+  {
+   "iso3": "JOR",
+   "name": "Jordan",
+   "conflict": false,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 52
+    },
+    {
+     "year": 2022,
+     "value": 60
+    },
+    {
+     "year": 2023,
+     "value": 64.1
+    },
+    {
+     "year": 2024,
+     "value": 73
+    },
+    {
+     "year": 2025,
+     "value": 80
+    }
+   ],
+   "ihr_composite": 80,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 50,
+    "IHR Coordination": 73,
+    "Financing": 50,
+    "Laboratory": 72,
+    "Surveillance": 80,
+    "Human Resources": 50,
+    "Health Emergency Mgmt": 73,
+    "Health Services": 73,
+    "Infection Prevention & Control": 53,
+    "Risk Communication": 47,
+    "Points of Entry": 80,
+    "Zoonotic Diseases": 80,
+    "Food Safety": 40,
+    "Chemical Events": 60,
+    "Radiation Emergencies": 80
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 1.41,
+     "year": 2023
+    },
+    "physicians": {
+     "value": 2.851,
+     "year": 2022
+    },
+    "nurses": {
+     "value": 3.333,
+     "year": 2023
+    },
+    "health_exp_gdp": {
+     "value": 7.66000605,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 342.10394287,
+     "year": 2023
+    },
+    "oop": {
+     "value": 34.4679451,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 99,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 96,
+     "year": 2024
+    },
+    "water": {
+     "value": 88.9502985282712,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 80.0755731216364,
+     "year": 2024
+    },
+    "population": {
+     "value": 11520684,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 77.981,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 12.9,
+     "year": 2024
+    }
+   },
+   "income": "Upper middle income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 436226,
+    "asylum_seekers": 8068,
+    "idps": 0,
+    "stateless": 13,
+    "returned": 256854
+   },
+   "rank": 8
+  },
+  {
+   "iso3": "KWT",
+   "name": "Kuwait",
+   "conflict": false,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 83
+    },
+    {
+     "year": 2022,
+     "value": 92
+    },
+    {
+     "year": 2023,
+     "value": 94
+    },
+    {
+     "year": 2024,
+     "value": 97
+    },
+    {
+     "year": 2025,
+     "value": 97
+    }
+   ],
+   "ihr_composite": 97,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 90,
+    "IHR Coordination": 93,
+    "Financing": 100,
+    "Laboratory": 80,
+    "Surveillance": 100,
+    "Human Resources": 100,
+    "Health Emergency Mgmt": 100,
+    "Health Services": 87,
+    "Infection Prevention & Control": 100,
+    "Risk Communication": 100,
+    "Points of Entry": 100,
+    "Zoonotic Diseases": 80,
+    "Food Safety": 80,
+    "Chemical Events": 100,
+    "Radiation Emergencies": 100
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 2.33,
+     "year": 2020
+    },
+    "physicians": {
+     "value": 2.273,
+     "year": 2020
+    },
+    "nurses": {
+     "value": 4.545,
+     "year": 2020
+    },
+    "health_exp_gdp": {
+     "value": 4.96311998,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 1679.12353516,
+     "year": 2023
+    },
+    "oop": {
+     "value": 10.00349617,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 98,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 99,
+     "year": 2024
+    },
+    "water": {
+     "value": 100,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 100,
+     "year": 2024
+    },
+    "population": {
+     "value": 4865298,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 84.580487804878,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 8.1,
+     "year": 2024
+    }
+   },
+   "income": "High income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 386,
+    "asylum_seekers": 611,
+    "idps": 0,
+    "stateless": 92000,
+    "returned": 0
+   },
+   "rank": 1
+  },
+  {
+   "iso3": "LBN",
+   "name": "Lebanon",
+   "conflict": true,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 66
+    },
+    {
+     "year": 2022,
+     "value": 72
+    },
+    {
+     "year": 2023,
+     "value": 70.1
+    },
+    {
+     "year": 2024,
+     "value": 70
+    },
+    {
+     "year": 2025,
+     "value": 70
+    }
+   ],
+   "ihr_composite": 70,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 80,
+    "IHR Coordination": 73,
+    "Financing": 20,
+    "Laboratory": 84,
+    "Surveillance": 100,
+    "Human Resources": 60,
+    "Health Emergency Mgmt": 67,
+    "Health Services": 67,
+    "Infection Prevention & Control": 60,
+    "Risk Communication": 80,
+    "Points of Entry": 60,
+    "Zoonotic Diseases": 80,
+    "Food Safety": 40,
+    "Chemical Events": 80,
+    "Radiation Emergencies": 100
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 2.73,
+     "year": 2021
+    },
+    "physicians": {
+     "value": 2.68,
+     "year": 2020
+    },
+    "nurses": {
+     "value": 1.918,
+     "year": 2018
+    },
+    "health_exp_gdp": {
+     "value": 5.57497263,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 260.8119812,
+     "year": 2023
+    },
+    "oop": {
+     "value": 29.70126343,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 67,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 49,
+     "year": 2024
+    },
+    "water": {
+     "value": 47.7,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 25.6726802158649,
+     "year": 2024
+    },
+    "population": {
+     "value": 5849421,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 77.945,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 17.6,
+     "year": 2024
+    }
+   },
+   "income": "Lower middle income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 535168,
+    "asylum_seekers": 7617,
+    "idps": 64417,
+    "stateless": 40000,
+    "returned": 525943
+   },
+   "rank": 13
+  },
+  {
+   "iso3": "LBY",
+   "name": "Libya",
+   "conflict": true,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 45
+    },
+    {
+     "year": 2022,
+     "value": 53
+    },
+    {
+     "year": 2023,
+     "value": 53.5
+    },
+    {
+     "year": 2024,
+     "value": 38
+    },
+    {
+     "year": 2025,
+     "value": 39
+    }
+   ],
+   "ihr_composite": 39,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 30,
+    "IHR Coordination": 60,
+    "Financing": 70,
+    "Laboratory": 56,
+    "Surveillance": 80,
+    "Human Resources": 60,
+    "Health Emergency Mgmt": 73,
+    "Health Services": 67,
+    "Infection Prevention & Control": 40,
+    "Risk Communication": 53,
+    "Points of Entry": 33,
+    "Zoonotic Diseases": 60,
+    "Food Safety": 60,
+    "Chemical Events": 20,
+    "Radiation Emergencies": 40
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 3.5,
+     "year": 2022
+    },
+    "physicians": {
+     "value": 2.042,
+     "year": 2017
+    },
+    "nurses": {
+     "value": 6.377,
+     "year": 2017
+    },
+    "health_exp_gdp": {
+     "value": 7.80515862,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 470.4034729,
+     "year": 2023
+    },
+    "oop": {
+     "value": 19.17657852,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 89,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 86,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 21.7469168678011,
+     "year": 2024
+    },
+    "population": {
+     "value": 7458555,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 71.121,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 9.8,
+     "year": 2024
+    }
+   },
+   "income": "Upper middle income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 552523,
+    "asylum_seekers": 105954,
+    "idps": 32791,
+    "stateless": 0,
+    "returned": 2551
+   },
+   "rank": 17
+  },
+  {
+   "iso3": "MAR",
+   "name": "Morocco",
+   "conflict": false,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 73
+    },
+    {
+     "year": 2022,
+     "value": 73
+    },
+    {
+     "year": 2023,
+     "value": 73.5
+    },
+    {
+     "year": 2024,
+     "value": 75
+    },
+    {
+     "year": 2025,
+     "value": 75
+    }
+   ],
+   "ihr_composite": 75,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 50,
+    "IHR Coordination": 53,
+    "Financing": 80,
+    "Laboratory": 84,
+    "Surveillance": 80,
+    "Human Resources": 70,
+    "Health Emergency Mgmt": 80,
+    "Health Services": 80,
+    "Infection Prevention & Control": 53,
+    "Risk Communication": 80,
+    "Points of Entry": 73,
+    "Zoonotic Diseases": 80,
+    "Food Safety": 80,
+    "Chemical Events": 80,
+    "Radiation Emergencies": 80
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 0.73,
+     "year": 2023
+    },
+    "physicians": {
+     "value": 0.74,
+     "year": 2021
+    },
+    "nurses": {
+     "value": 0.869,
+     "year": 2023
+    },
+    "health_exp_gdp": {
+     "value": 6.06396198,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 232.24751282,
+     "year": 2023
+    },
+    "oop": {
+     "value": 37.25432968,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 98,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 96,
+     "year": 2024
+    },
+    "water": {
+     "value": 79.9818072279602,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 8.4240714170847,
+     "year": 2024
+    },
+    "population": {
+     "value": 38430770,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 75.493,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 15.7,
+     "year": 2024
+    }
+   },
+   "income": "Lower middle income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 7304,
+    "asylum_seekers": 15033,
+    "idps": 0,
+    "stateless": 0,
+    "returned": 0
+   },
+   "rank": 12
+  },
+  {
+   "iso3": "OMN",
+   "name": "Oman",
+   "conflict": false,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 75
+    },
+    {
+     "year": 2022,
+     "value": 80
+    },
+    {
+     "year": 2023,
+     "value": 81.7
+    },
+    {
+     "year": 2024,
+     "value": 76
+    },
+    {
+     "year": 2025,
+     "value": 76
+    }
+   ],
+   "ihr_composite": 76,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 40,
+    "IHR Coordination": 73,
+    "Financing": 70,
+    "Laboratory": 92,
+    "Surveillance": 100,
+    "Human Resources": 50,
+    "Health Emergency Mgmt": 87,
+    "Health Services": 100,
+    "Infection Prevention & Control": 93,
+    "Risk Communication": 93,
+    "Points of Entry": 87,
+    "Zoonotic Diseases": 80,
+    "Food Safety": 80,
+    "Chemical Events": 100,
+    "Radiation Emergencies": 80
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 0.99,
+     "year": 2023
+    },
+    "physicians": {
+     "value": 1.992,
+     "year": 2022
+    },
+    "nurses": {
+     "value": 4.661,
+     "year": 2022
+    },
+    "health_exp_gdp": {
+     "value": 3.49047446,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 732.04089355,
+     "year": 2023
+    },
+    "oop": {
+     "value": 6.31094599,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 99,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 99,
+     "year": 2024
+    },
+    "water": {
+     "value": 91.1011744135751,
+     "year": 2024
+    },
+    "population": {
+     "value": 5494691,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 80.246,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 10.3,
+     "year": 2024
+    }
+   },
+   "income": "High income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 289,
+    "asylum_seekers": 414,
+    "idps": 0,
+    "stateless": 0,
+    "returned": 0
+   },
+   "rank": 10
+  },
+  {
+   "iso3": "PSE",
+   "name": "occupied Palestinian territory",
+   "conflict": true,
+   "ihr_trend": [
+    {
+     "year": 2025,
+     "value": 43
+    }
+   ],
+   "ihr_composite": 43,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": null,
+    "IHR Coordination": null,
+    "Financing": null,
+    "Laboratory": null,
+    "Surveillance": null,
+    "Human Resources": null,
+    "Health Emergency Mgmt": null,
+    "Health Services": null,
+    "Infection Prevention & Control": null,
+    "Risk Communication": null,
+    "Points of Entry": null,
+    "Zoonotic Diseases": null,
+    "Food Safety": null,
+    "Chemical Events": null,
+    "Radiation Emergencies": null
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": null,
+    "IHR Coordination": null,
+    "Financing": null,
+    "Laboratory": null,
+    "Surveillance": null,
+    "Human Resources": null,
+    "Health Emergency Mgmt": null,
+    "Health Services": null,
+    "Infection Prevention & Control": null,
+    "Risk Communication": null,
+    "Points of Entry": null,
+    "Zoonotic Diseases": null,
+    "Food Safety": null,
+    "Chemical Events": null,
+    "Radiation Emergencies": null
+   },
+   "context": {
+    "beds": {
+     "value": 1.3,
+     "year": 2022
+    },
+    "physicians": {
+     "value": 2.168,
+     "year": 2018
+    },
+    "nurses": {
+     "value": 1.953,
+     "year": 2018
+    },
+    "health_exp_gdp": {
+     "value": 10.73343945,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 345.67965698,
+     "year": 2023
+    },
+    "oop": {
+     "value": 42.07169342,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 89,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 88,
+     "year": 2024
+    },
+    "water": {
+     "value": 80.6420172046077,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 73.5119845057758,
+     "year": 2024
+    },
+    "population": {
+     "value": 5413596,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 69.213,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 37.9,
+     "year": 2024
+    }
+   },
+   "income": "Lower middle income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 0,
+    "asylum_seekers": 0,
+    "idps": 0,
+    "stateless": 0,
+    "returned": 0
+   },
+   "rank": 16
+  },
+  {
+   "iso3": "QAT",
+   "name": "Qatar",
+   "conflict": false,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 92
+    },
+    {
+     "year": 2022,
+     "value": 94
+    },
+    {
+     "year": 2023,
+     "value": 94.7
+    },
+    {
+     "year": 2024,
+     "value": 89
+    },
+    {
+     "year": 2025,
+     "value": 92
+    }
+   ],
+   "ihr_composite": 92,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 100,
+    "IHR Coordination": 87,
+    "Financing": 100,
+    "Laboratory": 100,
+    "Surveillance": 100,
+    "Human Resources": 80,
+    "Health Emergency Mgmt": 87,
+    "Health Services": 100,
+    "Infection Prevention & Control": 93,
+    "Risk Communication": 87,
+    "Points of Entry": 87,
+    "Zoonotic Diseases": 100,
+    "Food Safety": 100,
+    "Chemical Events": 100,
+    "Radiation Emergencies": 100
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 1.25,
+     "year": 2022
+    },
+    "physicians": {
+     "value": 3.022,
+     "year": 2023
+    },
+    "nurses": {
+     "value": 8.489,
+     "year": 2023
+    },
+    "health_exp_gdp": {
+     "value": 2.52358818,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 1804.35424805,
+     "year": 2023
+    },
+    "oop": {
+     "value": 7.42945814,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 99,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 96,
+     "year": 2024
+    },
+    "water": {
+     "value": 95.345241877961,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 99.936545083788,
+     "year": 2024
+    },
+    "population": {
+     "value": 2972215,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 82.522,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 5.9,
+     "year": 2024
+    }
+   },
+   "income": "High income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 195,
+    "asylum_seekers": 153,
+    "idps": 0,
+    "stateless": 1200,
+    "returned": 0
+   },
+   "rank": 4
+  },
+  {
+   "iso3": "SAU",
+   "name": "Saudi Arabia",
+   "conflict": false,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 91
+    },
+    {
+     "year": 2022,
+     "value": 93
+    },
+    {
+     "year": 2023,
+     "value": 94.6
+    },
+    {
+     "year": 2024,
+     "value": 95
+    },
+    {
+     "year": 2025,
+     "value": 96
+    }
+   ],
+   "ihr_composite": 96,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 100,
+    "IHR Coordination": 87,
+    "Financing": 100,
+    "Laboratory": 92,
+    "Surveillance": 100,
+    "Human Resources": 100,
+    "Health Emergency Mgmt": 100,
+    "Health Services": 93,
+    "Infection Prevention & Control": 100,
+    "Risk Communication": 100,
+    "Points of Entry": 87,
+    "Zoonotic Diseases": 80,
+    "Food Safety": 100,
+    "Chemical Events": 80,
+    "Radiation Emergencies": 100
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 2.41,
+     "year": 2023
+    },
+    "physicians": {
+     "value": 3.406,
+     "year": 2023
+    },
+    "nurses": {
+     "value": 6.557,
+     "year": 2023
+    },
+    "health_exp_gdp": {
+     "value": 5.68722248,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 1825.2545166,
+     "year": 2023
+    },
+    "oop": {
+     "value": 14.11603928,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 96,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 97,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 83.8898965219249,
+     "year": 2024
+    },
+    "population": {
+     "value": 36973555,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 78.982,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 6,
+     "year": 2024
+    }
+   },
+   "income": "High income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 448,
+    "asylum_seekers": 3907,
+    "idps": 0,
+    "stateless": 70000,
+    "returned": 0
+   },
+   "rank": 2
+  },
+  {
+   "iso3": "SYR",
+   "name": "Syria",
+   "conflict": true,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 58
+    },
+    {
+     "year": 2022,
+     "value": 58
+    },
+    {
+     "year": 2023,
+     "value": 41
+    },
+    {
+     "year": 2024,
+     "value": 41
+    },
+    {
+     "year": 2025,
+     "value": 33
+    }
+   ],
+   "ihr_composite": 33,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 60,
+    "IHR Coordination": 20,
+    "Financing": 30,
+    "Laboratory": 36,
+    "Surveillance": 50,
+    "Human Resources": 40,
+    "Health Emergency Mgmt": 53,
+    "Health Services": 40,
+    "Infection Prevention & Control": 40,
+    "Risk Communication": 33,
+    "Points of Entry": 33,
+    "Zoonotic Diseases": 40,
+    "Food Safety": 60,
+    "Chemical Events": 40,
+    "Radiation Emergencies": 40
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 1.43,
+     "year": 2021
+    },
+    "physicians": {
+     "value": 1.521,
+     "year": 2021
+    },
+    "nurses": {
+     "value": 1.757,
+     "year": 2021
+    },
+    "health_exp_gdp": {
+     "value": 2.70998812,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 33.34017944,
+     "year": 2023
+    },
+    "oop": {
+     "value": 72.40081787,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 81,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 73,
+     "year": 2024
+    },
+    "population": {
+     "value": 25620427,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 72.56,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 18.4,
+     "year": 2024
+    }
+   },
+   "income": "Low income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 9885,
+    "asylum_seekers": 4144,
+    "idps": 5542227,
+    "stateless": 160000,
+    "returned": 1964201
+   },
+   "rank": 20
+  },
+  {
+   "iso3": "TUN",
+   "name": "Tunisia",
+   "conflict": false,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 66
+    },
+    {
+     "year": 2022,
+     "value": 74
+    },
+    {
+     "year": 2023,
+     "value": 75.1
+    },
+    {
+     "year": 2024,
+     "value": 78
+    },
+    {
+     "year": 2025,
+     "value": 84
+    }
+   ],
+   "ihr_composite": 84,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 60,
+    "IHR Coordination": 80,
+    "Financing": 80,
+    "Laboratory": 92,
+    "Surveillance": 100,
+    "Human Resources": 50,
+    "Health Emergency Mgmt": 73,
+    "Health Services": 93,
+    "Infection Prevention & Control": 53,
+    "Risk Communication": 33,
+    "Points of Entry": 73,
+    "Zoonotic Diseases": 100,
+    "Food Safety": 80,
+    "Chemical Events": 80,
+    "Radiation Emergencies": 80
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 1.82,
+     "year": 2023
+    },
+    "physicians": {
+     "value": 1.315,
+     "year": 2021
+    },
+    "nurses": {
+     "value": 2.161,
+     "year": 2021
+    },
+    "health_exp_gdp": {
+     "value": 7.98537874,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 317.70983887,
+     "year": 2023
+    },
+    "oop": {
+     "value": 37.93983841,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 96,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 97,
+     "year": 2024
+    },
+    "water": {
+     "value": 64.9781072145301,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 79.7855170219304,
+     "year": 2024
+    },
+    "population": {
+     "value": 12348573,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 76.711,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 12.1,
+     "year": 2024
+    }
+   },
+   "income": "Lower middle income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 2386,
+    "asylum_seekers": 5523,
+    "idps": 0,
+    "stateless": 0,
+    "returned": 0
+   },
+   "rank": 7
+  },
+  {
+   "iso3": "ARE",
+   "name": "United Arab Emirates",
+   "conflict": false,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 96
+    },
+    {
+     "year": 2022,
+     "value": 96
+    },
+    {
+     "year": 2023,
+     "value": 96.5
+    },
+    {
+     "year": 2024,
+     "value": 97
+    },
+    {
+     "year": 2025,
+     "value": 96
+    }
+   ],
+   "ihr_composite": 96,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 100,
+    "IHR Coordination": 100,
+    "Financing": 100,
+    "Laboratory": 100,
+    "Surveillance": 100,
+    "Human Resources": 80,
+    "Health Emergency Mgmt": 100,
+    "Health Services": 100,
+    "Infection Prevention & Control": 87,
+    "Risk Communication": 100,
+    "Points of Entry": 100,
+    "Zoonotic Diseases": 100,
+    "Food Safety": 80,
+    "Chemical Events": 100,
+    "Radiation Emergencies": 100
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 1.87,
+     "year": 2022
+    },
+    "physicians": {
+     "value": 2.992,
+     "year": 2023
+    },
+    "nurses": {
+     "value": 6.187,
+     "year": 2022
+    },
+    "health_exp_gdp": {
+     "value": 4.97095108,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 2401.52026367,
+     "year": 2023
+    },
+    "oop": {
+     "value": 9.66616821,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 98,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 96,
+     "year": 2024
+    },
+    "water": {
+     "value": 98.6413172332089,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 98.4496998209727,
+     "year": 2024
+    },
+    "population": {
+     "value": 11513149,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 83.069,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 4.8,
+     "year": 2024
+    }
+   },
+   "income": "High income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 1377,
+    "asylum_seekers": 6257,
+    "idps": 0,
+    "stateless": 0,
+    "returned": 0
+   },
+   "rank": 2
+  },
+  {
+   "iso3": "YEM",
+   "name": "Yemen",
+   "conflict": true,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 55
+    },
+    {
+     "year": 2022,
+     "value": 40
+    },
+    {
+     "year": 2023,
+     "value": 27.6
+    },
+    {
+     "year": 2024,
+     "value": 36
+    },
+    {
+     "year": 2025,
+     "value": 36
+    }
+   ],
+   "ihr_composite": 36,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 30,
+    "IHR Coordination": 20,
+    "Financing": 30,
+    "Laboratory": 36,
+    "Surveillance": 40,
+    "Human Resources": 30,
+    "Health Emergency Mgmt": 27,
+    "Health Services": 27,
+    "Infection Prevention & Control": 27,
+    "Risk Communication": 27,
+    "Points of Entry": 20,
+    "Zoonotic Diseases": 40,
+    "Food Safety": 20,
+    "Chemical Events": 20,
+    "Radiation Emergencies": 20
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 0.46,
+     "year": 2023
+    },
+    "physicians": {
+     "value": 0.098,
+     "year": 2023
+    },
+    "nurses": {
+     "value": 0.541,
+     "year": 2023
+    },
+    "health_exp_gdp": {
+     "value": 9.69559193,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 47.78109741,
+     "year": 2023
+    },
+    "oop": {
+     "value": 69.12571716,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 41,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 42,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 43.1211742417875,
+     "year": 2024
+    },
+    "population": {
+     "value": 41773878,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 69.439,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 38.1,
+     "year": 2024
+    }
+   },
+   "income": "Low income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 49107,
+    "asylum_seekers": 14642,
+    "idps": 4795983,
+    "stateless": 0,
+    "returned": 1098
+   },
+   "rank": 19
+  },
+  {
+   "iso3": "DJI",
+   "name": "Djibouti",
+   "conflict": false,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 41
+    },
+    {
+     "year": 2022,
+     "value": 40
+    },
+    {
+     "year": 2023,
+     "value": 33.7
+    },
+    {
+     "year": 2024,
+     "value": 30
+    },
+    {
+     "year": 2025,
+     "value": 39
+    }
+   ],
+   "ihr_composite": 39,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 50,
+    "IHR Coordination": 20,
+    "Financing": 20,
+    "Laboratory": 36,
+    "Surveillance": 70,
+    "Human Resources": 50,
+    "Health Emergency Mgmt": 33,
+    "Health Services": 33,
+    "Infection Prevention & Control": 27,
+    "Risk Communication": 20,
+    "Points of Entry": 27,
+    "Zoonotic Diseases": 40,
+    "Food Safety": 40,
+    "Chemical Events": 20,
+    "Radiation Emergencies": 20
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 1.4,
+     "year": 2018
+    },
+    "physicians": {
+     "value": 0.211,
+     "year": 2022
+    },
+    "nurses": {
+     "value": 0.194,
+     "year": 2022
+    },
+    "health_exp_gdp": {
+     "value": 2.28316021,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 77.57087708,
+     "year": 2023
+    },
+    "oop": {
+     "value": 28.84145355,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 75,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 77,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 39.6553838822901,
+     "year": 2023
+    },
+    "population": {
+     "value": 1184076,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 66.202,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 48.9,
+     "year": 2024
+    }
+   },
+   "income": "Lower middle income",
+   "region": "Middle East, North Africa, Afghanistan & Pakistan",
+   "refugees": {
+    "refugees": 24899,
+    "asylum_seekers": 10141,
+    "idps": 0,
+    "stateless": 0,
+    "returned": 0
+   },
+   "rank": 17
+  },
+  {
+   "iso3": "SDN",
+   "name": "Sudan",
+   "conflict": true,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 44
+    },
+    {
+     "year": 2022,
+     "value": 49
+    },
+    {
+     "year": 2023,
+     "value": 50.5
+    },
+    {
+     "year": 2024,
+     "value": 55
+    },
+    {
+     "year": 2025,
+     "value": 53
+    }
+   ],
+   "ihr_composite": 53,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 40,
+    "IHR Coordination": 67,
+    "Financing": 60,
+    "Laboratory": 60,
+    "Surveillance": 80,
+    "Human Resources": 50,
+    "Health Emergency Mgmt": 80,
+    "Health Services": 40,
+    "Infection Prevention & Control": 47,
+    "Risk Communication": 33,
+    "Points of Entry": 60,
+    "Zoonotic Diseases": 80,
+    "Food Safety": 20,
+    "Chemical Events": 20,
+    "Radiation Emergencies": 20
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 0.66,
+     "year": 2021
+    },
+    "physicians": {
+     "value": 0.25,
+     "year": 2017
+    },
+    "nurses": {
+     "value": 1.083,
+     "year": 2018
+    },
+    "health_exp_gdp": {
+     "value": 2.85165739,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 21.0830822,
+     "year": 2023
+    },
+    "oop": {
+     "value": 57.36631393,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 46,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 39,
+     "year": 2024
+    },
+    "population": {
+     "value": 51662147,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 66.521,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 61.6,
+     "year": 2024
+    }
+   },
+   "income": "Low income",
+   "region": "Sub-Saharan Africa ",
+   "refugees": {
+    "refugees": 809816,
+    "asylum_seekers": 50147,
+    "idps": 9139309,
+    "stateless": 0,
+    "returned": 3070758
+   },
+   "rank": 15
+  },
+  {
+   "iso3": "SOM",
+   "name": "Somalia",
+   "conflict": true,
+   "ihr_trend": [
+    {
+     "year": 2021,
+     "value": 34
+    },
+    {
+     "year": 2022,
+     "value": 33
+    },
+    {
+     "year": 2023,
+     "value": 35
+    },
+    {
+     "year": 2024,
+     "value": 33
+    },
+    {
+     "year": 2025,
+     "value": 33
+    }
+   ],
+   "ihr_composite": 33,
+   "ihr_year": 2025,
+   "capacities": {
+    "Policy, Legal & Normative": 20,
+    "IHR Coordination": 47,
+    "Financing": 20,
+    "Laboratory": 48,
+    "Surveillance": 70,
+    "Human Resources": 40,
+    "Health Emergency Mgmt": 40,
+    "Health Services": 40,
+    "Infection Prevention & Control": 40,
+    "Risk Communication": 33,
+    "Points of Entry": 27,
+    "Zoonotic Diseases": 40,
+    "Food Safety": 20,
+    "Chemical Events": 20,
+    "Radiation Emergencies": 20
+   },
+   "capacity_years": {
+    "Policy, Legal & Normative": 2023,
+    "IHR Coordination": 2023,
+    "Financing": 2023,
+    "Laboratory": 2023,
+    "Surveillance": 2023,
+    "Human Resources": 2023,
+    "Health Emergency Mgmt": 2023,
+    "Health Services": 2023,
+    "Infection Prevention & Control": 2023,
+    "Risk Communication": 2023,
+    "Points of Entry": 2023,
+    "Zoonotic Diseases": 2023,
+    "Food Safety": 2023,
+    "Chemical Events": 2023,
+    "Radiation Emergencies": 2023
+   },
+   "context": {
+    "beds": {
+     "value": 0.87,
+     "year": 2019
+    },
+    "health_exp_gdp": {
+     "value": 3.74413586,
+     "year": 2023
+    },
+    "health_exp_pc": {
+     "value": 22.37065506,
+     "year": 2023
+    },
+    "oop": {
+     "value": 30.77948952,
+     "year": 2023
+    },
+    "imm_measles": {
+     "value": 64,
+     "year": 2024
+    },
+    "imm_dpt": {
+     "value": 70,
+     "year": 2024
+    },
+    "sanitation": {
+     "value": 16.3823397337184,
+     "year": 2024
+    },
+    "population": {
+     "value": 19654739,
+     "year": 2025
+    },
+    "life_exp": {
+     "value": 58.967,
+     "year": 2024
+    },
+    "u5mort": {
+     "value": 101.1,
+     "year": 2024
+    }
+   },
+   "income": "Low income",
+   "region": "Sub-Saharan Africa ",
+   "refugees": {
+    "refugees": 20967,
+    "asylum_seekers": 25702,
+    "idps": 3347408,
+    "stateless": 0,
+    "returned": 0
+   },
+   "rank": 20
+  }
+ ]
+}

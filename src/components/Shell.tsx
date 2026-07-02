@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { BarChart3, BookOpen, Check, FileText, Globe2, Info, Map, Moon, Share2, SlidersHorizontal, Sun, Users } from 'lucide-react'
-import { fmt, useI18n, type Lang } from '../lib/i18n'
+import { fmt, useI18n } from '../lib/i18n'
 import type { Theme } from '../lib/chartTheme'
 
 export type View = 'overview' | 'country' | 'context' | 'about' | 'methodology'
@@ -23,11 +23,9 @@ type ShellProps = {
   onBriefing: () => void
   theme: Theme
   setTheme: (theme: Theme) => void
-  lang: Lang
-  setLang: (lang: Lang) => void
 }
 
-export function Shell({ view, setView, generated, children, onBriefing, theme, setTheme, lang, setLang }: ShellProps) {
+export function Shell({ view, setView, generated, children, onBriefing, theme, setTheme }: ShellProps) {
   const { t } = useI18n()
   const [shareStatus, setShareStatus] = useState<'idle' | 'copied' | 'failed'>('idle')
   const share = async () => {
@@ -40,7 +38,7 @@ export function Shell({ view, setView, generated, children, onBriefing, theme, s
     }
     window.setTimeout(() => setShareStatus('idle'), 2500)
   }
-  const dateLocale = lang === 'ar' ? 'ar-LB' : 'en-GB'
+  const dateLocale = 'en-GB'
   return <div className="app-shell">
     <aside className="sidebar" aria-label="Primary navigation">
       <div className="brand-mark" aria-hidden="true"><Globe2 /></div>
@@ -51,7 +49,6 @@ export function Shell({ view, setView, generated, children, onBriefing, theme, s
         <div><strong>{t.product}</strong><span className="divider" /> <span>{t.navigation[view]}</span></div>
         <div className="top-actions">
           <span className="freshness">{t.topbar.dataRefreshed} <b>{new Date(generated).toLocaleDateString(dateLocale, { day: '2-digit', month: 'short', year: 'numeric' })}</b></span>
-          <button className="text-button language-status" onClick={() => setLang(lang === 'ar' ? 'en' : 'ar')} title={t.topbar.languageToggleTitle}><Globe2 /> {t.topbar.languageToggle}</button>
           <button className="text-button icon-button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? t.topbar.themeToLight : t.topbar.themeToDark} title={theme === 'dark' ? t.topbar.themeToLight : t.topbar.themeToDark}>{theme === 'dark' ? <Sun /> : <Moon />}</button>
           <button className="text-button" onClick={share} aria-live="polite">{shareStatus === 'copied' ? <Check /> : <Share2 />} {shareStatus === 'copied' ? t.topbar.linkCopied : shareStatus === 'failed' ? t.topbar.copyFailed : t.topbar.share}</button>
           <button className="primary-button" onClick={onBriefing}><FileText /> {t.topbar.briefing}</button>

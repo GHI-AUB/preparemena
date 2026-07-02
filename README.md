@@ -23,7 +23,6 @@ python3 scripts/validate_data.py public/data.json
 
 ## Interface features
 
-- English and Arabic (RTL) interface via the topbar language toggle or `?lang=ar`; deep analytical copy remains English pending review.
 - Light and dark themes; follows system preference and persists the toggle.
 - Browser back/forward navigate between workspaces and countries.
 - Map year slider replays any SPAR reference year; "Latest" shows each country's most recent report.

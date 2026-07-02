@@ -90,7 +90,7 @@ function MoverRow({ mover, onCountry }: { mover: Mover; onCountry: (iso3: string
 }
 
 function Metric({ label, value, detail, tone }: { label: string; value: string; detail: string; tone: string }) { return <div className={`metric ${tone}`}><span>{label}</span><strong>{value}</strong><small>{detail}</small></div> }
-function PanelHead({ title, subtitle, count, csvRows }: { title: string; subtitle: string; count: number; csvRows: CsvRow[] }) { return <header className="panel-head"><div><h2>{title}</h2><p>{subtitle}</p></div><div className="analysis-actions"><CsvLink filename={`${title.toLowerCase().replace(/[^a-z0-9؀-ۿ]+/g, '-')}.csv`} rows={csvRows} /><Coverage count={count} /></div></header> }
+function PanelHead({ title, subtitle, count, csvRows }: { title: string; subtitle: string; count: number; csvRows: CsvRow[] }) { return <header className="panel-head"><div><h2>{title}</h2><p>{subtitle}</p></div><div className="analysis-actions"><CsvLink filename={`${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.csv`} rows={csvRows} /><Coverage count={count} /></div></header> }
 function Trend({ value }: { value: number | null }) {
   const { t } = useI18n()
   if (value == null) return <span title={t.overview.insufficientTitle}><Minus /></span>

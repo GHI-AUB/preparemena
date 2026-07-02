@@ -48,13 +48,6 @@ test('dark mode toggle flips the theme token', async ({ page }) => {
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
 })
 
-test('arabic toggle switches direction and translates navigation', async ({ page }) => {
-  await page.goto('/?view=overview')
-  await page.getByRole('button', { name: 'العربية' }).click()
-  await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')
-  await expect(page.locator('.sidebar')).toContainText('نظرة إقليمية عامة')
-})
-
 test('csv export links carry data', async ({ page }) => {
   await page.goto('/?view=overview')
   await expect(page.locator('.export-link').first()).toHaveAttribute('href', /blob:/)

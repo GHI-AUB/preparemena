@@ -1,7 +1,5 @@
 import { createContext, useContext } from 'react'
 
-export type Lang = 'en' | 'ar'
-
 export function fmt(template: string, vars: Record<string, string | number>): string {
   return template.replace(/\{(\w+)\}/g, (_, key) => String(vars[key] ?? ''))
 }
@@ -21,8 +19,6 @@ const en = {
     linkCopied: 'Link copied',
     copyFailed: 'Copy failed',
     briefing: 'Briefing',
-    languageToggle: 'العربية',
-    languageToggleTitle: 'التبديل إلى العربية',
     themeToDark: 'Switch to dark mode',
     themeToLight: 'Switch to light mode',
   },
@@ -143,160 +139,8 @@ const en = {
   },
 }
 
-const ar: typeof en = {
-  product: 'PREPARE MENA',
-  navigation: {
-    overview: 'نظرة إقليمية عامة',
-    context: 'السياق والضغوط',
-    country: 'الملف القُطري',
-    about: 'حول المنصة',
-    methodology: 'المنهجية وجودة البيانات',
-  },
-  topbar: {
-    dataRefreshed: 'حُدِّثت البيانات في',
-    share: 'مشاركة',
-    linkCopied: 'تم نسخ الرابط',
-    copyFailed: 'تعذّر النسخ',
-    briefing: 'موجز',
-    languageToggle: 'English',
-    languageToggleTitle: 'Switch to English',
-    themeToDark: 'التبديل إلى الوضع الداكن',
-    themeToLight: 'التبديل إلى الوضع الفاتح',
-  },
-  footer: {
-    initiative: 'مبادرة EPaPP في معهد الصحة العالمية بالجامعة الأميركية في بيروت · دعم للقرار الاستراتيجي، وليس ترصّدًا للفاشيات',
-    caveat: 'تقارير SPAR لمنظمة الصحة العالمية تقييم ذاتي؛ ينبغي التحقق من الأولويات وطنيًا.',
-  },
-  briefing: {
-    suffix: 'موجز',
-    generated: 'أُنشئ في',
-    snapshot: 'لقطة البيانات',
-  },
-  filters: {
-    ariaLabel: 'عوامل تصفية لوحة المعلومات',
-    income: 'فئة الدخل',
-    conflict: 'حالة النزاع',
-    capacity: 'مجال القدرة',
-    all: 'الكل',
-    allCapacities: 'جميع القدرات',
-    conflictAffected: 'متأثرة بالنزاع',
-    otherSettings: 'بيئات أخرى',
-    reset: 'إعادة التعيين',
-  },
-  common: {
-    loadingData: 'جارٍ تحميل بيانات التأهب المُتحقَّق منها',
-    loadingMap: 'جارٍ تحميل الحدود الجغرافية…',
-    viewDataTable: 'عرض جدول البيانات',
-    rankedChart: 'مخطط شريطي مرتّب',
-    coverage: '{n} من {total} دولة',
-    rank: 'الترتيب',
-    country: 'الدولة',
-    score: 'النتيجة',
-    year: 'السنة',
-    trend: 'الاتجاه',
-    median: 'الوسيط',
-    reportingCountries: 'الدول المبلِّغة',
-    yearUnavailable: 'السنة غير متوفرة',
-    noMatch: 'لا توجد دولة مطابقة',
-    searchCountries: 'ابحث عن دولة…',
-  },
-  empty: {
-    title: 'لا توجد دول مطابقة لعوامل التصفية',
-    body: 'أعد تعيين عوامل التصفية أو وسِّعها. لم تُستبدل أي ملاحظة مفقودة بالصفر.',
-  },
-  overview: {
-    title: 'نظرة إقليمية عامة',
-    findingBelow: 'سجّلت {n} من أصل {total} دولة مبلِّغة نتيجة دون 60.',
-    findingNone: 'لا توجد دولة مبلِّغة بنتيجة دون 60.',
-    findingUse: 'استخدم هذه النظرة العامة لتحديد المواضع التي تستدعي فيها القدرات المبلَّغة مراجعة قُطرية أدق.',
-    regionalMedian: 'الوسيط الإقليمي',
-    regionalMedianDetail: 'نتيجة SPAR · {n} دولة',
-    below60: 'دون 60',
-    below60Detail: 'من {n} دولة مبلِّغة',
-    conflictAffected: 'متأثرة بالنزاع',
-    conflictDetail: 'من {n} دولة مختارة',
-    displaced: 'النازحون المتواجدون',
-    displacedDetail: 'لاجئون وطالبو لجوء مستضافون إضافةً إلى النازحين داخليًا',
-    mapTitle: 'التأهب في منطقة الشرق الأوسط وشمال أفريقيا',
-    mapSubtitle: 'مؤشر SPAR المركّب المبلَّغ للسنة المختارة؛ اختر دولة لعرض ملفها',
-    mapYearLabel: 'سنة الإسناد',
-    mapYearReporting: '{n} من {total} دولة أبلغت عن سنة {year}',
-    priorityTitle: 'ترتيب أولويات الدول',
-    prioritySubtitle: 'الأدنى نتيجةً أولًا؛ تتشارك النتائج المتساوية الترتيب نفسه',
-    blindSpotsTitle: 'مواطن الضعف في القدرات الإقليمية',
-    blindSpotsSubtitle: 'الوسيط والمدى الربيعي والنطاق والتغطية وعدد الدول دون 60 عبر جميع المجالات المبلَّغة',
-    trajectoryTitle: 'المسار الإقليمي',
-    trajectorySubtitle: 'وسيط نتائج الدول المتاحة حسب السنة',
-    agendaTitle: 'أجندة العمل الإقليمية',
-    agendaSubtitle: 'أدنى ثلاثة وسطاء قدرات إقليمية مبلَّغة؛ إشارات للمراجعة المشتركة، وليست وصفات أو توصيات تمويل',
-    agendaReview: 'راجع الدول المبلِّغة وتحقق من الإشارة عبر التقييمات والخطط الوطنية.',
-    changedTitle: 'ما الذي تغيّر',
-    changedSubtitle: 'أكبر تحركات مؤشر SPAR المركّب بين آخر سنتي إسناد لكل دولة',
-    improvers: 'أكبر التحسنات',
-    decliners: 'أكبر التراجعات',
-    changedEmpty: 'لا توجد دولة لديها سنتا إسناد حديثتان للمقارنة.',
-    capacity: 'القدرة',
-    iqr: 'المدى الربيعي',
-    range: 'النطاق',
-    years: 'السنوات',
-    coverageCol: 'التغطية',
-    below60Col: 'دون 60',
-    improvedTitle: 'تحسّن {n} نقاط',
-    declinedTitle: 'تراجع {n} نقاط',
-    stableTitle: 'مستقر عمومًا',
-    insufficientTitle: 'ملاحظات غير كافية',
-  },
-  profile: {
-    title: 'الملف القُطري',
-    subtitle: 'قدرات التأهب المبلَّغة، وسياق النظام الصحي، والموقع بين النظراء، وحدود البيانات.',
-    countryLabel: 'الدولة',
-    compareLabel: 'قارن مع',
-    compareNone: 'بدون مقارنة',
-    latestSpar: 'أحدث مؤشر SPAR مركّب',
-    reported: 'أُبلغ عنه {year}',
-    yearUnavailable: 'السنة غير متوفرة',
-    regionalRank: 'الترتيب الإقليمي',
-    tiesShare: 'تتشارك النتائج المتساوية الترتيب نفسه',
-    trajectory: 'المسار',
-    insufficient: 'ملاحظات غير كافية',
-    sparPoints: 'نقاط SPAR',
-    capacityCoverage: 'تغطية القدرات',
-    availableDomains: 'مجالات SPAR المتاحة',
-    radarTitle: 'ملف القدرات مقارنةً بالإقليم',
-    gapsTitle: 'فجوات القدرات',
-    gapsSubtitle: 'فرق وصفي عن الوسيط الإقليمي؛ ليس مقياس أداء أو استثمار',
-    trendTitle: 'اتجاه SPAR عبر الزمن',
-    trendSubtitle: 'مؤشر SPAR المركّب السنوي المبلَّغ؛ يستخدم المحور الرأسي المقياس الكامل 0–100',
-    peerTitle: 'مقارنة النظراء',
-    incomePeers: 'نظراء الدخل',
-    conflictPeers: 'نظراء حالة النزاع',
-    allMena: 'كل المنطقة',
-    contextTitle: 'سياق النظام الصحي مقارنةً بالوسيط الإقليمي',
-    contextSubtitle: 'قيم ووحدات فعلية؛ يستخدم كل مؤشر مقياسه وسنوات إسناده الخاصة',
-  },
-  context: {
-    title: 'السياق والضغوط',
-    subtitle: 'علاقات وصفية تدعم تقييمًا قُطريًا أدق؛ وهي لا تُثبت السببية.',
-  },
-}
-
-export const dictionaries: Record<Lang, typeof en> = { en, ar }
+export const copy = en
 export type Dict = typeof en
 
-export const I18nContext = createContext<{ lang: Lang; t: Dict }>({ lang: 'en', t: en })
+export const I18nContext = createContext<{ t: Dict }>({ t: en })
 export const useI18n = () => useContext(I18nContext)
-
-export function resolveInitialLang(): Lang {
-  const fromUrl = new URLSearchParams(location.search).get('lang')
-  if (fromUrl === 'ar' || fromUrl === 'en') return fromUrl
-  return localStorage.getItem('lang') === 'ar' ? 'ar' : 'en'
-}
-
-export function applyLang(lang: Lang) {
-  document.documentElement.lang = lang
-  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'
-  localStorage.setItem('lang', lang)
-  const url = new URL(location.href)
-  url.searchParams.set('lang', lang)
-  history.replaceState({}, '', url)
-}

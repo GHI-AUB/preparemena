@@ -14,10 +14,21 @@ npm run dev
 ## Quality checks
 
 ```bash
-npm test
+npm test          # unit tests (vitest)
+npm run lint      # eslint
+npm run test:e2e  # browser smoke tests (playwright)
 npm run build
 python3 scripts/validate_data.py public/data.json
 ```
+
+## Interface features
+
+- English and Arabic (RTL) interface via the topbar language toggle or `?lang=ar`; deep analytical copy remains English pending review.
+- Light and dark themes; follows system preference and persists the toggle.
+- Browser back/forward navigate between workspaces and countries.
+- Map year slider replays any SPAR reference year; "Latest" shows each country's most recent report.
+- Country profile supports a second-country comparison overlay on the capacity radar and tables.
+- "What changed" digest surfaces the largest SPAR movements between each country's two most recent reference years.
 
 ## Data refresh
 

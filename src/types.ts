@@ -45,5 +45,4 @@ export type Dataset = {
 export type Filters = {
   income: string
   conflict: string
-  capacity: string
 }

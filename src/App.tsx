@@ -12,6 +12,7 @@ const CountryProfile = lazy(() => import('./features/CountryProfile').then(modul
 const ContextPressures = lazy(() => import('./features/ContextPressures').then(module => ({ default: module.ContextPressures })))
 const Methodology = lazy(() => import('./features/Methodology').then(module => ({ default: module.Methodology })))
 const About = lazy(() => import('./features/About').then(module => ({ default: module.About })))
+const BriefingView = lazy(() => import('./features/BriefingView').then(module => ({ default: module.BriefingView })))
 
 export default function App() {
   const [data, setData] = useState<Dataset | null>(null)
@@ -21,6 +22,7 @@ export default function App() {
   const [filters, setFilters] = useState<Filters>(() => parseFilters(new URLSearchParams(location.search)))
   const [peerMode, setPeerMode] = useState<PeerMode>(() => parsePeerMode(new URLSearchParams(location.search).get('peers')))
   const [theme, setThemeState] = useState<Theme>(() => { const initial = resolveInitialTheme(); document.documentElement.dataset.theme = initial; return initial })
+  const [briefing, setBriefing] = useState(false)
   useEffect(() => { fetch(`${import.meta.env.BASE_URL}data.json`).then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json() }).then(setData).catch(e => setError(String(e))) }, [])
   useEffect(() => {
     const url = new URL(location.href)
@@ -46,6 +48,7 @@ export default function App() {
       if (value === 'all') url.searchParams.delete(key)
       else url.searchParams.set(key, value)
     }
+    url.searchParams.delete('capacity')
     url.searchParams.delete('foundation')
     url.searchParams.set('peers', peerMode)
     history.replaceState({}, '', url)
@@ -53,23 +56,25 @@ export default function App() {
   useEffect(() => {
     if (!data) return
     const incomes = new Set(data.countries.map(c => c.income).filter(Boolean))
-    const capacities = new Set(data.meta.capacity_order)
     const income = filters.income === 'all' || incomes.has(filters.income) ? filters.income : 'all'
-    const capacity = filters.capacity === 'all' || capacities.has(filters.capacity) ? filters.capacity : 'all'
-    if (income !== filters.income || capacity !== filters.capacity) setFilters({ ...filters, income, capacity })
+    if (income !== filters.income) setFilters({ ...filters, income })
   }, [data, filters])
   const pushUrl = (mutate: (url: URL) => void) => { const url = new URL(location.href); mutate(url); if (url.href !== location.href) history.pushState({}, '', url) }
   const setView = (next: View) => { setViewState(next); pushUrl(url => url.searchParams.set('view', next)) }
   const setCountry = (iso: string) => { setSelected(iso); setViewState('country'); pushUrl(url => { url.searchParams.set('view', 'country'); url.searchParams.set('country', iso) }) }
   const setTheme = (next: Theme) => { applyChartTheme(next); setThemeState(next) }
+  useEffect(() => {
+    document.body.dataset.briefing = briefing ? 'true' : 'false'
+    return () => { delete document.body.dataset.briefing }
+  }, [briefing])
   const i18n = useMemo(() => ({ t: copy }), [])
-  const filtered = useMemo(() => data?.countries.filter(c => (filters.income === 'all' || c.income === filters.income) && (filters.conflict === 'all' || (filters.conflict === 'conflict') === c.conflict) && (filters.capacity === 'all' || c.capacities?.[filters.capacity] != null)) ?? [], [data, filters])
+  const filtered = useMemo(() => data?.countries.filter(c => (filters.income === 'all' || c.income === filters.income) && (filters.conflict === 'all' || (filters.conflict === 'conflict') === c.conflict)) ?? [], [data, filters])
   if (error) return <div className="fatal"><h1>Dataset unavailable</h1><p>{error}</p><p>The last valid dataset could not be loaded. No values have been fabricated.</p></div>
   if (!data) return <WorkspaceSkeleton label={copy.common.loadingData} />
   const country = data.countries.find(c => c.iso3 === selected) ?? data.countries[0]
   const filteredView = view === 'overview' || view === 'context'
   return <I18nContext.Provider value={i18n}>
-    <Shell view={view} setView={setView} generated={data.meta.generated} onBriefing={() => window.print()} theme={theme} setTheme={setTheme}>
+    <Shell view={view} setView={setView} generated={data.meta.generated} onBriefing={() => setBriefing(true)} theme={theme} setTheme={setTheme}>
       {filteredView && <FiltersBar data={data} filters={filters} setFilters={setFilters} />}
       {filteredView && filtered.length === 0 && <EmptyState title={i18n.t.empty.title}>{i18n.t.empty.body}</EmptyState>}
       <Suspense fallback={<WorkspaceSkeleton />}>
@@ -80,5 +85,6 @@ export default function App() {
         {view === 'methodology' && <Methodology data={data} />}
       </Suspense>
     </Shell>
+    {briefing && <Suspense fallback={<WorkspaceSkeleton label="Preparing briefing" />}><BriefingView view={view} data={data} countries={filteredView ? filtered : data.countries} country={country} filters={filters} peerMode={peerMode} onClose={() => setBriefing(false)} /></Suspense>}
   </I18nContext.Provider>
 }

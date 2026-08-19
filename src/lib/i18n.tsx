@@ -125,7 +125,7 @@ const en = {
     gapsTitle: 'Capacity gaps',
     gapsSubtitle: 'Descriptive difference from the regional median; not a performance or investment measure',
     trendTitle: 'SPAR trend over time',
-    trendSubtitle: 'Reported annual SPAR composite score; the y-axis uses the full 0–100 scale',
+    trendSubtitle: 'Reported annual SPAR composite score: selected country as solid teal line, regional median as dashed navy line; y-axis uses the full 0–100 scale',
     peerTitle: 'Peer comparison',
     incomePeers: 'Income peers',
     conflictPeers: 'Conflict-status peers',

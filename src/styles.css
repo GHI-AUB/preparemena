@@ -28,6 +28,10 @@
 }
 
 .country-profile{max-width:1540px}
+
+.situation-grid>.priority-table{height:542px;max-height:542px;display:flex;flex-direction:column}
+.situation-grid>.priority-table .table-wrap{height:auto;min-height:0;flex:1;overflow:auto}
+@media(max-width:720px){.situation-grid>.priority-table{display:block;height:auto;max-height:none}.situation-grid>.priority-table .table-wrap{height:430px}}
 .country-identity{display:flex;align-items:center;justify-content:space-between;gap:20px;background:linear-gradient(110deg,#102a43,#174a73);color:white;padding:18px 22px;margin-bottom:14px;border-radius:5px}
 .country-identity h2{font-size:23px;margin:0 0 5px}.country-identity p{font-size:12px;margin:0;color:#d9e2ec}
 .country-identity>div:last-child{display:grid;text-align:right}.country-identity b{font-size:22px}.country-identity span,.country-identity small{font-size:11px;color:#d9e2ec}
@@ -58,13 +62,50 @@
 .export-link{display:inline-flex;align-items:center;gap:5px;padding:6px 9px;border:1px solid var(--line);border-radius:4px;background:var(--panel);color:var(--heading);font-size:11px;font-weight:600;line-height:1;text-decoration:none;white-space:nowrap}.export-link:hover{border-color:#9fb3c8;background:#f4f8fb;color:var(--teal)}.export-link:active{background:var(--soft-line)}.export-link[aria-disabled=true]{opacity:.55;pointer-events:none}
 @media(max-width:900px){.policy-questions,.about-grid,.agenda-grid{grid-template-columns:1fr}.policy-questions>div,.agenda-grid article{border-right:0;border-bottom:1px solid var(--line)}}
 
+.briefing-overlay{position:fixed;inset:0;z-index:100;background:#e8eef4;color:#102a43;overflow:auto;padding:18px}
+.briefing-toolbar{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 auto 16px;max-width:1060px;background:#fff;border:1px solid #d9e2ec;border-radius:6px;box-shadow:0 8px 28px rgba(16,42,67,.16);padding:12px 14px}
+.briefing-toolbar>div:first-child{display:grid;gap:2px}.briefing-toolbar b{font-size:14px}.briefing-toolbar span{font-size:12px;color:#627d98}.briefing-toolbar>div:last-child{display:flex;gap:8px;flex-wrap:wrap}
+.briefing-document{max-width:210mm;margin:0 auto 24px;background:#fff;box-shadow:0 18px 60px rgba(16,42,67,.20)}
+.briefing-title{display:flex;justify-content:space-between;gap:18px;border-bottom:3px solid #102a43;padding:14mm 14mm 8mm}
+.briefing-title div{display:grid;gap:3px}.briefing-title strong{font-size:22pt;letter-spacing:0;color:#102a43}.briefing-title b{font-size:13pt;text-align:right}.briefing-title span{font-size:8pt;color:#486581}.briefing-title div:last-child span{text-align:right}
+.briefing-page{min-height:270mm;padding:10mm 14mm 12mm;break-after:page}.briefing-page:last-of-type{break-after:auto}.briefing-page h1{margin:0 0 6mm;font-size:18pt;color:#102a43}.briefing-card{border:1px solid #d9e2ec;border-radius:4px;padding:5mm;margin-bottom:5mm;break-inside:avoid;background:#fff}.briefing-card h2{margin:0 0 2mm;font-size:11pt;color:#102a43}.briefing-card p,.briefing-card li{font-size:8.5pt;line-height:1.55;color:#486581}.briefing-card ul{margin:2mm 0 0;padding-left:5mm}
+.briefing-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin-bottom:5mm}.briefing-metrics div{border-top:3px solid #087e8b;background:#f8fafc;padding:4mm}.briefing-metrics span{display:block;font-size:7.5pt;color:#627d98}.briefing-metrics b{display:block;font-size:18pt;margin:1mm 0;color:#102a43}.briefing-metrics small{font-size:7.5pt;color:#486581}
+.briefing-two{display:grid;grid-template-columns:1fr 1fr;gap:5mm;align-items:start}.briefing-table{width:100%;border-collapse:collapse;font-size:7.5pt}.briefing-table th,.briefing-table td{border-bottom:1px solid #e8eef4;padding:2mm;text-align:left;vertical-align:top}.briefing-table thead th{background:#f0f4f8;color:#334e68;position:static}.briefing-table tbody th{color:#102a43}
+.briefing-bars{display:grid;gap:2.5mm}.briefing-bars>div{display:grid;grid-template-columns:33mm 1fr 31mm;gap:3mm;align-items:center;font-size:7.5pt}.briefing-bars span{font-weight:600;color:#102a43}.briefing-bars i{height:4mm;background:#e8eef4;display:block}.briefing-bars i b{display:block;height:100%;background:#087e8b}.briefing-bars em{font-style:normal;color:#486581}
+.briefing-mini-stats{display:grid;gap:3mm}.briefing-mini-stats div{display:grid;grid-template-columns:1fr auto auto;gap:4mm;border-bottom:1px solid #e8eef4;padding-bottom:2mm;font-size:8pt}.briefing-mini-stats b{color:#102a43}.briefing-mini-stats span{font-weight:700;color:#087e8b}.briefing-mini-stats small{color:#627d98}
+.briefing-agenda{display:grid;gap:3mm}.briefing-agenda article{display:flex;gap:3mm;border-bottom:1px solid #e8eef4;padding-bottom:3mm}.briefing-agenda article>span{display:grid;place-items:center;width:8mm;height:8mm;border-radius:50%;background:#102a43;color:#fff;font-weight:700;flex:none}.briefing-agenda b{font-size:9pt}.briefing-agenda p{margin:1mm 0}.briefing-agenda small{font-size:7.5pt;color:#627d98}.briefing-footnote{border-top:1px solid #d9e2ec;padding:5mm 14mm 8mm;font-size:7.5pt;color:#627d98}
+@media screen and (max-width:900px){.briefing-overlay{padding:10px}.briefing-toolbar,.briefing-title{display:block}.briefing-toolbar>div:last-child{margin-top:10px}.briefing-document{max-width:none}.briefing-page{min-height:auto}.briefing-metrics,.briefing-two{grid-template-columns:1fr}.briefing-title div:last-child span,.briefing-title b{text-align:left}.briefing-bars>div{grid-template-columns:1fr}}
+
 @media print{
-  @page{size:A4 portrait;margin:12mm 10mm 15mm;@bottom-left{content:"AUB-GHI EPaPP · WHO SPAR is self-reported · validate priorities nationally";font-size:6.5pt;color:var(--muted)}@bottom-right{content:"Page " counter(page) " of " counter(pages);font-size:6.5pt;color:var(--muted)}}
+  @page{size:A4 portrait;margin:9mm}
   body{background:var(--panel);color:#102a43;font-size:9pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .sidebar,.topbar,.filters,.top-actions,.analysis-actions,.data-table summary,.chart-alternative summary,.workspace-head label{display:none!important}
   .briefing-header{display:flex;align-items:end;justify-content:space-between;border-bottom:2px solid #102a43;padding:0 0 7mm;margin:0 0 6mm}.briefing-header strong{font-size:18pt}.briefing-header span{font-size:12pt}.briefing-header small{font-size:7pt;color:var(--muted)}
   .briefing-footer{display:none!important}
   .app-shell,.app-main{display:block}.workspace{padding:0;max-width:none}.finding-band{margin:0 0 5mm}.situation-grid,.method-grid{display:grid;grid-template-columns:1fr 1fr;gap:4mm}.context-grid,.profile-grid{display:grid;grid-template-columns:1fr;gap:4mm}.panel,.finding-band,.country-identity,.country-summary,.about-intro,.policy-questions,.about-card{break-inside:avoid;box-shadow:none}.regional-agenda,.profile-panel.wide,.wide-method{grid-column:1/-1}.panel-head{padding:3mm}.panel-head h2{font-size:10pt}.panel-head p{font-size:7pt}.data-table[open],.data-table{display:none}.capacity-radar svg{max-height:120mm}.analysis-panel canvas,.profile-panel canvas{max-width:100%!important}.workspace-head{margin-bottom:5mm}.workspace-head h1{font-size:18pt}.context-comparison{grid-template-columns:1fr 1fr;padding:3mm}.about-grid{grid-template-columns:1fr 1fr}.policy-questions{grid-template-columns:repeat(3,1fr)}
+  body[data-briefing=true]{background:#fff}
+  body[data-briefing=true] .app-shell{display:none!important}
+  body[data-briefing=true] .briefing-overlay{position:static;inset:auto;display:block;overflow:visible;padding:0;background:#fff}
+  body[data-briefing=true] .briefing-toolbar{display:none!important}
+  body[data-briefing=true] .briefing-document{max-width:none;margin:0;box-shadow:none;background:#fff}
+  body[data-briefing=true] .briefing-title{display:flex;padding:0 0 5mm;margin:0 0 4mm;break-inside:avoid}
+  body[data-briefing=true] .briefing-title strong{font-size:18pt}
+  body[data-briefing=true] .briefing-title b{font-size:11pt}
+  body[data-briefing=true] .briefing-page{min-height:auto;padding:0;break-after:page}
+  body[data-briefing=true] .briefing-page:last-of-type{break-after:auto}
+  body[data-briefing=true] .briefing-page h1{font-size:15pt;margin-bottom:4mm}
+  body[data-briefing=true] .briefing-card{box-shadow:none;break-inside:avoid;padding:3.5mm;margin-bottom:3.5mm}
+  body[data-briefing=true] .briefing-card h2{font-size:10pt}
+  body[data-briefing=true] .briefing-card p,body[data-briefing=true] .briefing-card li{font-size:7.5pt}
+  body[data-briefing=true] .briefing-metrics{grid-template-columns:repeat(4,1fr);gap:2.5mm;margin-bottom:3.5mm}
+  body[data-briefing=true] .briefing-metrics div{padding:2.5mm}
+  body[data-briefing=true] .briefing-metrics b{font-size:14pt}
+  body[data-briefing=true] .briefing-two{grid-template-columns:1fr 1fr;gap:3.5mm}
+  body[data-briefing=true] .briefing-agenda.compact{gap:2mm}
+  body[data-briefing=true] .briefing-agenda.compact article{padding-bottom:2mm}
+  body[data-briefing=true] .briefing-footnote{padding:3mm 0 0;break-inside:avoid}
+  body[data-briefing=true] .briefing-table{font-size:7pt}
+  body[data-briefing=true] .briefing-table th,body[data-briefing=true] .briefing-table td{padding:1.2mm}
 }
 
 /* Skeleton loading states */

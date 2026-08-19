@@ -19,6 +19,5 @@ export function parseFilters(params: URLSearchParams): Filters {
   return {
     income: params.get('income') || 'all',
     conflict: ['conflict', 'stable'].includes(params.get('conflict') || '') ? params.get('conflict')! : 'all',
-    capacity: params.get('capacity') || 'all',
   }
 }

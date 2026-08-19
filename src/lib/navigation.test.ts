@@ -10,8 +10,8 @@ describe('parseView', () => {
     expect(parseView(null)).toBe('overview')
   })
   it('restores filters and rejects an invalid conflict classification', () => {
-    expect(parseFilters(new URLSearchParams('income=High+income&conflict=conflict&capacity=Laboratory'))).toEqual({ income: 'High income', conflict: 'conflict', capacity: 'Laboratory' })
-    expect(parseFilters(new URLSearchParams('conflict=unknown'))).toEqual({ income: 'all', conflict: 'all', capacity: 'all' })
+    expect(parseFilters(new URLSearchParams('income=High+income&conflict=conflict&capacity=Laboratory'))).toEqual({ income: 'High income', conflict: 'conflict' })
+    expect(parseFilters(new URLSearchParams('conflict=unknown'))).toEqual({ income: 'all', conflict: 'all' })
   })
   it('restores foundation and peer state with safe defaults', () => {
     expect(parseFoundation('sanitation')).toBe('sanitation')

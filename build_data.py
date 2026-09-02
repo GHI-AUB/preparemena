@@ -1,7 +1,7 @@
 import urllib.request, json, time, statistics
 from datetime import datetime, timezone
 from pathlib import Path
-from scripts.refresh_helpers import expected_complete_year, observation_year_range, publish_candidates, select_latest_available_year
+from scripts.refresh_helpers import expected_complete_year, extract_who_composites, observation_year_range, publish_candidates, select_latest_available_year
 # ---------- reference tables ----------
 MENA = {
  'DZA':'Algeria','BHR':'Bahrain','EGY':'Egypt','IRN':'Iran','IRQ':'Iraq',
@@ -34,9 +34,9 @@ retrieved_at=datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
 # ---- WHO composite (SDGIHR2021), all years ----
 comp=gho('SDGIHR2021')
+composites=extract_who_composites(comp,MENA)
 for iso in MENA:
-    rows=sorted([(r['TimeDim'],r['NumericValue']) for r in comp
-                 if r.get('SpatialDim')==iso and r.get('NumericValue') is not None])
+    rows=composites[iso]
     data[iso]['ihr_trend']=[{'year':y,'value':round(v,1)} for y,v in rows]
     data[iso]['ihr_composite']=rows[-1][1] if rows else None
     data[iso]['ihr_year']=rows[-1][0] if rows else None
@@ -187,6 +187,17 @@ def validate_payload(candidate):
     assert parsed['meta']['source_refresh']['who_composite']['status']=='success'
     assert parsed['meta']['source_refresh']['world_bank']['status']=='success'
     assert parsed['meta']['source_refresh']['unhcr']['status']=='success'
+    assert parsed['meta']['source_refresh']['who_composite']['coverage']==21
+    expected_capacities=set(parsed['meta']['capacity_order'])
+    for country in parsed['countries']:
+        trend=country['ihr_trend']
+        years=[point['year'] for point in trend]
+        assert years==sorted(set(years)), f"{country['iso3']}: composite trend years must be unique and ascending"
+        assert trend, f"{country['iso3']}: missing composite trend"
+        assert country['ihr_year']==trend[-1]['year'], f"{country['iso3']}: composite year does not match trend"
+        assert country['ihr_composite']==trend[-1]['value'], f"{country['iso3']}: composite score does not match trend"
+        assert set(country.get('capacities',{}))==expected_capacities, f"{country['iso3']}: capacity keys do not match capacity_order"
+        assert set(country.get('capacity_years',{}))==expected_capacities, f"{country['iso3']}: capacity-year keys do not match capacity_order"
 
 publish_candidates(payload,[Path('data.json'),Path('public/data.json')],validate_payload)
 print("WROTE data.json  countries=",len(out['countries']))

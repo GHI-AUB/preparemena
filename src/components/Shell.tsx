@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BarChart3, BookOpen, Check, FileText, Globe2, Info, Map, Moon, Share2, SlidersHorizontal, Sun, Users } from 'lucide-react'
+import { BarChart3, BookOpen, Check, FileText, Info, Map, Moon, Share2, SlidersHorizontal, Sun, Users } from 'lucide-react'
 import { fmt, useI18n } from '../lib/i18n'
 import type { Theme } from '../lib/chartTheme'
 
@@ -41,7 +41,13 @@ export function Shell({ view, setView, generated, children, onBriefing, theme, s
   const dateLocale = 'en-GB'
   return <div className="app-shell">
     <aside className="sidebar" aria-label="Primary navigation">
-      <div className="brand-mark" aria-hidden="true"><Globe2 /></div>
+      <div className="brand-mark">
+        <img
+          src="/logo.png"
+          alt="GHI – Global Health Institute"
+          className="brand-logo"
+        />
+      </div>
       <nav>{navigationIcons.map(([id, Icon]) => <button key={id} className={view === id ? 'active' : ''} aria-current={view === id ? 'page' : undefined} onClick={() => setView(id)}><Icon /><span>{t.navigation[id]}</span></button>)}</nav>
     </aside>
     <div className="app-main">

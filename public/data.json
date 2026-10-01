@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated": "2026-09-02",
-  "last_successful_refresh": "2026-09-02T10:44:02Z",
+  "generated": "2026-10-01",
+  "last_successful_refresh": "2026-10-01T11:36:10Z",
   "schema_version": "3.0.0",
   "displacement_year": 2025,
   "sources": [
@@ -13,35 +13,35 @@
    "who_composite": {
     "endpoint": "https://ghoapi.azureedge.net/api/SDGIHR2021",
     "status": "success",
-    "retrieved_at": "2026-09-02T10:44:02Z",
+    "retrieved_at": "2026-10-01T11:36:10Z",
     "coverage": 21,
     "reference_year": "2024\u20132025"
    },
    "who_capacities": {
     "endpoint": "https://ghoapi.azureedge.net/api/IHRSPAR2_C02..C15",
     "status": "success",
-    "retrieved_at": "2026-09-02T10:44:02Z",
+    "retrieved_at": "2026-10-01T11:36:10Z",
     "coverage": 20,
     "reference_year": "2023"
    },
    "world_bank": {
     "endpoint": "https://api.worldbank.org/v2/",
     "status": "success",
-    "retrieved_at": "2026-09-02T10:44:02Z",
+    "retrieved_at": "2026-10-01T11:36:10Z",
     "coverage": 21,
     "reference_year": "2017\u20132025"
    },
    "unhcr": {
     "endpoint": "https://api.unhcr.org/population/v1/population/",
     "status": "success",
-    "retrieved_at": "2026-09-02T10:44:02Z",
+    "retrieved_at": "2026-10-01T11:36:10Z",
     "coverage": 20,
     "reference_year": 2025
    },
    "conflict_classification": {
     "endpoint": "World Bank FY25 FCS list (versioned repository classification)",
     "status": "static",
-    "retrieved_at": "2026-09-02T10:44:02Z",
+    "retrieved_at": "2026-10-01T11:36:10Z",
     "coverage": 21,
     "reference_year": "FY25"
    }

@@ -43,7 +43,7 @@ export function Shell({ view, setView, generated, children, onBriefing, theme, s
     <aside className="sidebar" aria-label="Primary navigation">
       <div className="brand-mark">
         <img
-          src="/logo.png"
+          src={`${import.meta.env.BASE_URL}logo.png`}
           alt="GHI – Global Health Institute"
           className="brand-logo"
         />

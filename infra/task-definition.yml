@@ -1,0 +1,62 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ECS Fargate task definition for epapp-prepare-mena
+
+Parameters:
+  ImageUri:
+    Type: String
+    Default: 883907968008.dkr.ecr.eu-west-1.amazonaws.com/epapp-prepare-mena:ed48b330c798feac3966fe18b9ebaf590a745214
+  TaskCpu:
+    Type: String
+    Default: '256'
+    AllowedValues: ['256', '512', '1024']
+  TaskMemory:
+    Type: String
+    Default: '512'
+    AllowedValues: ['512', '1024', '2048']
+  LogRetentionDays:
+    Type: Number
+    Default: 30
+
+Resources:
+  LogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /ecs/epapp-prepare-mena
+      RetentionInDays: !Ref LogRetentionDays
+
+  TaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: epapp-prepare-mena
+      Cpu: !Ref TaskCpu
+      Memory: !Ref TaskMemory
+      NetworkMode: awsvpc
+      RequiresCompatibilities: [FARGATE]
+      ExecutionRoleArn: arn:aws:iam::883907968008:role/ecsTaskExecutionRole
+      ContainerDefinitions:
+        - Name: epapp-prepare-mena
+          Image: !Ref ImageUri
+          PortMappings:
+            - ContainerPort: 80
+              Protocol: tcp
+          ReadonlyRootFilesystem: false
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref LogGroup
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: ecs
+          HealthCheck:
+            Command:
+              - CMD-SHELL
+              - wget -qO- http://127.0.0.1/epapp-prepare-mena/ || exit 1
+            Interval: 30
+            Timeout: 5
+            Retries: 3
+            StartPeriod: 10
+
+Outputs:
+  TaskDefinitionArn:
+    Value: !Ref TaskDefinition
+    Export:
+      Name: epapp-prepare-mena-task-def-arn

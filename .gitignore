@@ -1,8 +1,43 @@
+# Dependencies
 node_modules/
+
+# Build output
 dist/
 tmp/
-.pytest_cache/
+
+# TypeScript incremental build info
 *.tsbuildinfo
-.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Test artefacts
 test-results/
 playwright-report/
+coverage/
+
+# Data pipeline scratch
+data.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*

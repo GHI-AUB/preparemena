@@ -1,8 +1,60 @@
-node_modules
-dist
+# Version control
 .git
+.gitignore
+
+# Dependencies (reinstalled inside the build stage)
+node_modules
+
+# Build output (produced inside the build stage)
+dist
+
+# Test artefacts
 tests
-docs
+test-results
+playwright-report
+coverage
 *.spec.ts
 *.test.ts
 *.test.tsx
+playwright.config.ts
+vitest.config.ts
+
+# Python / data pipeline (not needed for the SPA build)
+scripts
+build_data.py
+data.json
+__pycache__
+.pytest_cache
+.venv
+venv
+
+# Docs & specs
+docs
+NEXT_LEVEL_DASHBOARD_PROMPT.md
+CHANGELOG.md
+README.md
+
+# CI / hosting config
+.github
+amplify.yml
+app.js
+
+# Editor / OS
+.vscode
+.idea
+.claude
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Env files
+.env
+.env.*
+
+# Logs
+*.log
+npm-debug.log*
+
+# npm cache
+.npm

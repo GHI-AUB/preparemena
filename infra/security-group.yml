@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Security group for epapp-prepare-mena ECS tasks
+
+Parameters:
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: VPC where the ECS tasks run
+  AlbSecurityGroupId:
+    Type: AWS::EC2::SecurityGroup::Id
+    Description: Security group of the ALB that forwards traffic to this service
+
+Resources:
+  TaskSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: epapp-prepare-mena ECS task - allow HTTP from ALB only
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          SourceSecurityGroupId: !Ref AlbSecurityGroupId
+      SecurityGroupEgress:
+        - IpProtocol: '-1'
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: epapp-prepare-mena-task-sg
+
+  # Allow task SG to reach ECR VPC endpoints (image pull at task startup)
+  EcrEndpointIngress:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      GroupId: sg-0b02c947e1be2cf83
+      IpProtocol: tcp
+      FromPort: 443
+      ToPort: 443
+      SourceSecurityGroupId: !Ref TaskSecurityGroup
+      Description: epapp-prepare-mena task - ECR image pull
+
+Outputs:
+  SecurityGroupId:
+    Value: !Ref TaskSecurityGroup
+    Export:
+      Name: epapp-prepare-mena-task-sg-id

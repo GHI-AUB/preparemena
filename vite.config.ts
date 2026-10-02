@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: '/epapp-prepare-mena/',
   server: { port: Number(process.env.PORT) || 5173 },
   preview: { port: Number(process.env.PORT) || 4173 },
   build: {

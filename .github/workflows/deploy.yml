@@ -20,6 +20,7 @@ env:
   ECR_REPOSITORY: epapp-prepare-mena
   ECS_CLUSTER: ghi-applications
   ECS_SERVICE: epapp-prepare-mena-service-l1nbcsp0
+  TASK_FAMILY: epapp-prepare-mena
   CONTAINER_NAME: epapp-prepare-mena
 
 jobs:
@@ -47,11 +48,16 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
+      - name: Download current task definition
+        run: |
+          aws ecs describe-task-definition --task-definition $TASK_FAMILY \
+            --query taskDefinition > task-definition.json
+
       - name: Render ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition-family: ${{ env.ECS_SERVICE }}
+          task-definition: task-definition.json
           container-name: ${{ env.CONTAINER_NAME }}
           image: ${{ steps.build.outputs.image }}
 

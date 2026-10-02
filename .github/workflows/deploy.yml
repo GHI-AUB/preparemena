@@ -20,7 +20,6 @@ env:
   ECR_REPOSITORY: epapp-prepare-mena
   ECS_CLUSTER: ghi-applications
   ECS_SERVICE: epapp-prepare-mena-service-l1nbcsp0
-  TASK_FAMILY: epapp-prepare-mena
   CONTAINER_NAME: epapp-prepare-mena
 
 jobs:
@@ -52,7 +51,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition-family: ${{ env.TASK_FAMILY }}
+          task-definition-family: ${{ env.ECS_SERVICE }}
           container-name: ${{ env.CONTAINER_NAME }}
           image: ${{ steps.build.outputs.image }}
 

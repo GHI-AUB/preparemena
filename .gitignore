@@ -20,8 +20,8 @@ test-results/
 playwright-report/
 coverage/
 
-# Data pipeline scratch
-data.json
+# Data pipeline scratch (root copy only — public/data.json is intentional)
+/data.json
 
 # OS
 .DS_Store

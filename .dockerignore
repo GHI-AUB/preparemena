@@ -18,6 +18,7 @@ coverage
 *.test.tsx
 playwright.config.ts
 vitest.config.ts
+src/test-setup.ts
 
 # Python / data pipeline (not needed for the SPA build)
 scripts
@@ -36,8 +37,6 @@ README.md
 
 # CI / hosting config
 .github
-amplify.yml
-app.js
 
 # Editor / OS
 .vscode

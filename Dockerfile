@@ -12,6 +12,8 @@ RUN npm run build
 # ── Serve ──────────────────────────────────────────────────────────────────────
 FROM 883907968008.dkr.ecr.eu-west-1.amazonaws.com/ecr-public/docker/library/nginx:1.27-alpine
 
+RUN apk upgrade --no-cache
+
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 

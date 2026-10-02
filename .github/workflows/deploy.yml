@@ -18,8 +18,9 @@ env:
   AWS_REGION: eu-west-1
   ECR_REGISTRY: 883907968008.dkr.ecr.eu-west-1.amazonaws.com
   ECR_REPOSITORY: epapp-prepare-mena
-  ECS_CLUSTER: ghi-apps
-  ECS_SERVICE: epapp-prepare-mena
+  ECS_CLUSTER: ghi-applications
+  ECS_SERVICE: epapp-prepare-mena-service-l1nbcsp0
+  TASK_FAMILY: epapp-prepare-mena
   CONTAINER_NAME: epapp-prepare-mena
 
 jobs:
@@ -51,7 +52,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition-family: ${{ env.ECS_SERVICE }}
+          task-definition-family: ${{ env.TASK_FAMILY }}
           container-name: ${{ env.CONTAINER_NAME }}
           image: ${{ steps.build.outputs.image }}
 

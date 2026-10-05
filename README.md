@@ -2,7 +2,7 @@
 
 A static-hostable React + TypeScript decision-support dashboard covering reported epidemic-preparedness capacity across 21 MENA countries, built for the AUB Global Health Institute.
 
-The five workspaces are Regional Overview, Context & Pressures, Country Profile, About, and Methodology & Data Quality. Country Profile combines reported capacity evidence, trends, peer comparisons, and health-system context to support country-owned review.
+The five workspaces are Regional Overview, Context & Pressures, Country Profile , About, and Methodology & Data quality. Country Profile  combines reported capacity evidence, trends, peer comparisons, and health-system context to support country-owned review.
 
 ## Stack
 
@@ -74,7 +74,7 @@ aws ecr get-login-password --region eu-west-1 --profile me216 | \
 - Light and dark themes; follows system preference and persists the toggle
 - Browser back/forward navigate between workspaces and countries
 - Map year slider replays any SPAR reference year; "Latest" shows each country's most recent report
-- Country profile supports a second-country comparison overlay on the capacity radar and tables
+- Country Profile  supports a second-country comparison overlay on the capacity radar and tables
 - "What changed" digest surfaces the largest SPAR movements between each country's two most recent reference years
 
 ## Important interpretation limits
@@ -84,7 +84,7 @@ aws ecr get-login-password --region eu-west-1 --profile me216 | \
 - Missing values are excluded rather than converted to zero
 - Cross-sectional associations do not establish causality or investment efficiency
 - WHO benchmark and NAPHS references are planning prompts, not automatic recommendations
-- The WHO detailed-capacity query currently contains no published domain observations for occupied Palestinian territory; its reported 2025 composite remains visible
+- The WHO detailed-capacity query currently contains no published domain observations for Occupied Palestinian territory; its reported 2025 composite remains visible
 
 ## Repository notes
 

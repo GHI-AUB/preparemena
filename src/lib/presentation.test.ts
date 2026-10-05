@@ -4,14 +4,14 @@ import { copy } from './i18n'
 import { chartAxisTitles } from './chartLabels'
 
 describe('presentation contract', () => {
-  it('puts Context & Pressures second and names the country workspace Country Profile', () => {
+  it('puts Context & Pressures second and names the country workspace Country Profile ', () => {
     expect(navigationOrder).toEqual(['overview', 'context', 'country', 'about', 'methodology'])
     expect(navigationOrder.map(view => copy.navigation[view])).toEqual([
       'Regional overview',
-      'Context & pressures',
-      'Country profile',
+      'Context & Pressures',
+      'Country Profile ',
       'About',
-      'Methodology & data quality',
+      'Methodology & Data quality',
     ])
   })
 

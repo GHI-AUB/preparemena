@@ -6,7 +6,7 @@ from scripts.refresh_helpers import expected_complete_year, extract_who_composit
 MENA = {
  'DZA':'Algeria','BHR':'Bahrain','EGY':'Egypt','IRN':'Iran','IRQ':'Iraq',
  'JOR':'Jordan','KWT':'Kuwait','LBN':'Lebanon','LBY':'Libya',
- 'MAR':'Morocco','OMN':'Oman','PSE':'occupied Palestinian territory','QAT':'Qatar','SAU':'Saudi Arabia',
+ 'MAR':'Morocco','OMN':'Oman','PSE':'Occupied Palestinian territory','QAT':'Qatar','SAU':'Saudi Arabia',
  'SYR':'Syria','TUN':'Tunisia','ARE':'United Arab Emirates','YEM':'Yemen',
  'DJI':'Djibouti','SDN':'Sudan','SOM':'Somalia'}
 # World Bank FY25 Fragile & Conflict-affected Situations (FCS) — MENA subset

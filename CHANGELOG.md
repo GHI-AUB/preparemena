@@ -49,7 +49,7 @@ All notable changes to PREPARE MENA are documented here.
 ### Added
 - Baseline PREPARE MENA dashboard synced from Replit (2 Jul 2026)
 - React 18 + TypeScript + Vite 6 SPA
-- Five workspaces: Regional Overview, Context & Pressures, Country Profile, About, Methodology
+- Five workspaces: Regional Overview, Context & Pressures, Country Profile , About, Methodology
 - ECharts 5 visualizations
 - `build_data.py` — WHO GHO SPAR, World Bank, UNHCR data pipeline
 - Monthly GitHub Actions data refresh workflow (`refresh-data.yml`)

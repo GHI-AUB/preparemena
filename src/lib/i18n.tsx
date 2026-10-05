@@ -8,10 +8,10 @@ const en = {
   product: 'PREPARE MENA',
   navigation: {
     overview: 'Regional overview',
-    context: 'Context & pressures',
-    country: 'Country profile',
+    context: 'Context & Pressures',
+    country: 'Country Profile ',
     about: 'About',
-    methodology: 'Methodology & data quality',
+    methodology: 'Methodology & Data quality',
   },
   topbar: {
     dataRefreshed: 'Data refreshed',
@@ -106,7 +106,7 @@ const en = {
     insufficientTitle: 'Insufficient observations',
   },
   profile: {
-    title: 'Country profile',
+    title: 'Country Profile ',
     subtitle: 'Reported preparedness capacities, health-system context, peer position, and data limitations.',
     countryLabel: 'Country',
     compareLabel: 'Compare with',
@@ -134,7 +134,7 @@ const en = {
     contextSubtitle: 'Actual values and units; each indicator row uses its own scale and reference years',
   },
   context: {
-    title: 'Context & pressures',
+    title: 'Context & Pressures',
     subtitle: 'Descriptive relationships that support further country-specific assessment; they do not establish causality.',
   },
 }

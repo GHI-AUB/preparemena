@@ -104,8 +104,8 @@ function ContextPdf({ data, countries, filters }: PdfProps) {
   const sanitation = scored.flatMap(country => country.context?.sanitation ? [{ country, value: country.context.sanitation.value, year: country.context.sanitation.year }] : []).sort((a, b) => a.value - b.value)
   const spending = scored.flatMap(country => country.context?.health_exp_pc ? [{ country, value: country.context.health_exp_pc.value, year: country.context.health_exp_pc.year }] : []).sort((a, b) => a.value - b.value)
   return <>
-    <PageShell title="Context & pressures" context={filterLabel(filters)} generated={data.meta.generated}>
-      <Text style={styles.h1}>Context & pressures</Text>
+    <PageShell title="Context & Pressures" context={filterLabel(filters)} generated={data.meta.generated}>
+      <Text style={styles.h1}>Context & Pressures</Text>
       <PdfView style={styles.twoCol}>
         <PdfView style={[styles.card, styles.half]}><Text style={styles.h2}>Conflict-affected and other settings</Text><MiniStats rows={[
           ['Conflict-affected', median(scored.filter(c => c.conflict).map(c => c.ihr_composite)), `${scored.filter(c => c.conflict).length} countries`],
@@ -145,7 +145,7 @@ function CountryPdf({ data, country, peerMode }: PdfProps) {
     return obs && regional != null ? [[def.label, `${formatNumber(obs.value)} ${def.unit}`, String(obs.year), `${formatNumber(regional)} ${def.unit}`]] : []
   })
   return <>
-    <PageShell title="Country profile" context={country.name} generated={data.meta.generated}>
+    <PageShell title="Country Profile " context={country.name} generated={data.meta.generated}>
       <Text style={styles.h1}>{country.name}</Text>
       <MetricGrid items={[
         ['Latest SPAR composite', country.ihr_composite == null ? '-' : `${country.ihr_composite}/100`, country.ihr_year ? `Reported ${country.ihr_year}` : 'Year unavailable'],
@@ -158,7 +158,7 @@ function CountryPdf({ data, country, peerMode }: PdfProps) {
         <PdfView style={[styles.card, styles.half]}><Text style={styles.h2}>Capacity gaps</Text>{available.length ? <Bars rows={[...available].sort((a, b) => (a.gap ?? 0) - (b.gap ?? 0)).slice(0, 10).map(row => [row.name, Math.abs(row.gap ?? 0), `${(row.gap ?? 0) > 0 ? '+' : ''}${row.gap?.toFixed(1)} points`])} max={50} /> : <Text style={styles.p}>No gap calculation is shown because detailed capacity data are unavailable.</Text>}</PdfView>
       </PdfView>
     </PageShell>
-    <PageShell title="Country profile" context={country.name} generated={data.meta.generated}>
+    <PageShell title="Country Profile " context={country.name} generated={data.meta.generated}>
       <Text style={styles.h1}>Trend, peers and health-system context</Text>
       <PdfView style={styles.twoCol}>
         <PdfView style={[styles.card, styles.half]}><Text style={styles.h2}>SPAR trend over time</Text><Bars rows={country.ihr_trend.map(point => [String(point.year), point.value, `${point.value}/100`])} /></PdfView>
@@ -180,11 +180,11 @@ function AboutPdf({ data }: PdfProps) {
 
 function MethodologyPdf({ data }: PdfProps) {
   const refresh = Object.entries(data.meta.source_refresh ?? {})
-  return <PageShell title="Methodology & data quality" context={`${data.countries.length}-country scope`} generated={data.meta.generated}>
-    <Text style={styles.h1}>Methodology & data quality</Text>
+  return <PageShell title="Methodology & Data quality" context={`${data.countries.length}-country scope`} generated={data.meta.generated}>
+    <Text style={styles.h1}>Methodology & Data quality</Text>
     <PdfView style={styles.card}><Text style={styles.h2}>Calculation rules</Text><Text style={styles.p}>Missing and non-finite values are excluded, never converted to zero. Medians and quartiles use valid observations only. Ranks are competition ranks; ties share rank. Contextual relationships are descriptive and do not establish causality.</Text></PdfView>
     <PdfView style={styles.card}><Text style={styles.h2}>Source registry</Text><Table headers={['Source', 'Status', 'Reference year', 'Coverage']} rows={refresh.map(([key, source]) => [sourceName(key), source.status, source.reference_year ?? '-', `${source.coverage}/${data.countries.length}`])} /></PdfView>
-    <PdfView style={styles.card}><Text style={styles.h2}>Core limitations</Text><Text style={styles.p}>WHO SPAR is a State Party self-assessment, not an independent performance audit. Indicators use mixed reference years. {data.meta.fcs_note} is static and versioned. occupied Palestinian territory has a 2025 SPAR composite but no queried detailed-capacity domain observations.</Text></PdfView>
+    <PdfView style={styles.card}><Text style={styles.h2}>Core limitations</Text><Text style={styles.p}>WHO SPAR is a State Party self-assessment, not an independent performance audit. Indicators use mixed reference years. {data.meta.fcs_note} is static and versioned. Occupied Palestinian territory has a 2025 SPAR composite but no queried detailed-capacity domain observations.</Text></PdfView>
   </PageShell>
 }
 
@@ -241,5 +241,5 @@ function filterLabel(filters: Filters) {
 function formatDate(value: string) { return new Date(value).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) }
 function num(value: number | null) { return value == null ? '-' : value.toFixed(0) }
 function formatNumber(value: number) { return new Intl.NumberFormat('en', { maximumFractionDigits: 1 }).format(value) }
-function viewTitle(view: AppView) { return ({ overview: 'Regional overview', context: 'Context & pressures', country: 'Country profile', about: 'About', methodology: 'Methodology & data quality' } as Record<AppView, string>)[view] }
+function viewTitle(view: AppView) { return ({ overview: 'Regional overview', context: 'Context & Pressures', country: 'Country Profile ', about: 'About', methodology: 'Methodology & Data quality' } as Record<AppView, string>)[view] }
 function sourceName(key: string) { return ({ who_composite: 'WHO SPAR composite', who_capacities: 'WHO SPAR capacities', world_bank: 'World Bank indicators', unhcr: 'UNHCR displacement', conflict_classification: 'Conflict classification' } as Record<string, string>)[key] ?? key }

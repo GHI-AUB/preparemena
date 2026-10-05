@@ -9,10 +9,10 @@ test('regional overview renders metrics, map panel, and digest', async ({ page }
   await expect(page.locator('.map-year input[type=range]')).toBeVisible()
 })
 
-test('priority table navigates to country profile and back button returns', async ({ page }) => {
+test('priority table navigates to Country Profile  and back button returns', async ({ page }) => {
   await page.goto('/?view=overview')
   await page.locator('.priority-table tbody tr').first().click()
-  await expect(page.getByRole('heading', { name: 'Country profile' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Country Profile ' })).toBeVisible()
   await page.goBack()
   await expect(page.getByRole('heading', { name: 'Regional overview' })).toBeVisible()
 })
@@ -35,7 +35,7 @@ test('compare overlay adds a second country to the radar', async ({ page }) => {
 
 test('context, about, and methodology workspaces render', async ({ page }) => {
   await page.goto('/?view=context')
-  await expect(page.getByRole('heading', { name: 'Context & pressures' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Context & Pressures' })).toBeVisible()
   await page.goto('/?view=about')
   await expect(page.locator('main h2').first()).toBeVisible()
   await page.goto('/?view=methodology')

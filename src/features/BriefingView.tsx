@@ -86,7 +86,7 @@ function ContextBrief({ data, countries }: { data: Dataset; countries: Country[]
   const displacement = scored.map(country => ({ country, hosted: hostedPopulation(country), share: hostedPopulationShare(country) })).filter(row => row.hosted > 0 || row.share != null)
   return <>
     <section className="briefing-page">
-      <h1>Context & pressures</h1>
+      <h1>Context & Pressures</h1>
       <div className="briefing-two">
         <section className="briefing-card"><h2>Conflict-affected and other settings</h2><p>{data.meta.fcs_note}. Descriptive distribution only.</p><MiniStats rows={conflictGroups.map(([label, rows]) => ({ label, value: median(rows.map(c => c.ihr_composite)), detail: `${rows.length} countries` }))} /></section>
         <section className="briefing-card"><h2>Displacement pressure and preparedness</h2><p>Reported displaced people present, UNHCR {data.meta.displacement_year ?? 'year unavailable'}.</p><BriefingTable headers={['Country', 'People present', '% population', 'SPAR']} rows={displacement.sort((a, b) => b.hosted - a.hosted).slice(0, 10).map(row => [row.country.name, row.hosted.toLocaleString(), row.share == null ? '—' : `${row.share.toFixed(1)}%`, `${row.country.ihr_composite}/100`])} /></section>
@@ -159,10 +159,10 @@ function AboutBrief({ data }: { data: Dataset }) {
 function MethodologyBrief({ data }: { data: Dataset }) {
   const refresh = Object.entries(data.meta.source_refresh ?? {})
   return <section className="briefing-page">
-    <h1>Methodology & data quality</h1>
+    <h1>Methodology & Data quality</h1>
     <section className="briefing-card"><h2>Calculation rules</h2><ul><li>Missing and non-finite values are excluded, never converted to zero.</li><li>Medians and quartiles use valid observations only.</li><li>Ranks are competition ranks; ties share rank.</li><li>Contextual relationships are descriptive and do not establish causality.</li></ul></section>
     <section className="briefing-card"><h2>Source registry</h2><BriefingTable headers={['Source', 'Status', 'Reference year', 'Coverage']} rows={refresh.map(([key, source]) => [sourceName(key), source.status, source.reference_year ?? '—', `${source.coverage}/${data.countries.length}`])} /></section>
-    <section className="briefing-card"><h2>Core limitations</h2><ul><li>WHO SPAR is a State Party self-assessment, not an independent performance audit.</li><li>Indicators use mixed reference years.</li><li>{data.meta.fcs_note} is static and versioned.</li><li>occupied Palestinian territory has a 2025 SPAR composite but no queried detailed-capacity domain observations.</li></ul></section>
+    <section className="briefing-card"><h2>Core limitations</h2><ul><li>WHO SPAR is a State Party self-assessment, not an independent performance audit.</li><li>Indicators use mixed reference years.</li><li>{data.meta.fcs_note} is static and versioned.</li><li>Occupied Palestinian territory has a 2025 SPAR composite but no queried detailed-capacity domain observations.</li></ul></section>
   </section>
 }
 
@@ -202,5 +202,5 @@ function capacityDistributions(data: Dataset, countries: Country[]) {
 function formatDate(value: string) { return new Date(value).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) }
 function fmt(value: number | null) { return value == null ? '—' : value.toFixed(0) }
 function formatNumber(value: number) { return new Intl.NumberFormat('en', { maximumFractionDigits: 1 }).format(value) }
-function viewTitle(view: View) { return ({ overview: 'Regional overview', context: 'Context & pressures', country: 'Country profile', about: 'About', methodology: 'Methodology & data quality' } as Record<View, string>)[view] }
+function viewTitle(view: View) { return ({ overview: 'Regional overview', context: 'Context & Pressures', country: 'Country Profile ', about: 'About', methodology: 'Methodology & Data quality' } as Record<View, string>)[view] }
 function sourceName(key: string) { return ({ who_composite: 'WHO SPAR composite', who_capacities: 'WHO SPAR capacities', world_bank: 'World Bank indicators', unhcr: 'UNHCR displacement', conflict_classification: 'Conflict classification' } as Record<string, string>)[key] ?? key }

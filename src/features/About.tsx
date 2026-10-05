@@ -48,7 +48,7 @@ export function About({ data }: { data: Dataset }) {
     </AboutCard>
 
     <div className="about-grid">
-      <AboutCard icon={<Users />} title="Intended users">Health ministries, national preparedness agencies, regional bodies, WHO and UN partners, donors, analysts, and programme teams. The Regional Overview answers "where"; Context &amp; Pressures explores "why"; the Country Profile supports "what next".</AboutCard>
+      <AboutCard icon={<Users />} title="Intended users">Health ministries, national preparedness agencies, regional bodies, WHO and UN partners, donors, analysts, and programme teams. The Regional Overview answers "where"; Context &amp; Pressures explores "why"; the Country Profile  supports "what next".</AboutCard>
       <AboutCard icon={<Target />} title="Geographic scope">A defined 21-country Middle East and North Africa analytical scope. Designations do not express a position on legal status or borders.</AboutCard>
       <AboutCard icon={<ShieldCheck />} title="Strategic intelligence, not surveillance">The product is periodically refreshed and is not an outbreak alert, early-warning, operational command, or real-time surveillance system. SPAR scores are State Party self-assessments of reported capacity, not audits of performance.</AboutCard>
       <AboutCard icon={<Database />} title="Data and updates">

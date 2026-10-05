@@ -43,7 +43,7 @@ Preserve and improve these existing capabilities:
 - Income, health expenditure, health-system, and displacement context.
 - Preparedness trajectories over time.
 - Fifteen WHO IHR/SPAR capacity domains.
-- Country profile with strengths, gaps, context, trajectory, and peer comparison.
+- Country Profile  with strengths, gaps, context, trajectory, and peer comparison.
 - Clear acknowledgement that SPAR is self-assessed.
 
 Do not silently drop an existing indicator, country, analytical view, or caveat. If a view is removed or merged, document why and show where its analytical purpose is preserved.
@@ -162,7 +162,7 @@ Apply the following rules throughout the product:
 
 ## 6. Visual and interaction design
 
-Create a full visual concept before implementation and obtain approval before treating it as the production specification. Concept the complete Regional Overview, Country Profile, Context & Pressures workspace, Methodology center, and mobile adaptation; do not produce only a header or hero.
+Create a full visual concept before implementation and obtain approval before treating it as the production specification. Concept the complete Regional Overview, Country Profile , Context & Pressures workspace, Methodology center, and mobile adaptation; do not produce only a header or hero.
 
 Visual direction:
 
@@ -192,7 +192,7 @@ Every chart must have a clear title stating the finding or question, a concise s
 Add a policy-ready briefing mode that can produce a clean print/PDF layout for:
 
 - Regional briefing.
-- Single-country profile.
+- Single-Country Profile .
 - Multi-country comparison.
 - Selected capacity priority brief.
 
@@ -335,7 +335,7 @@ Follow this order:
 4. Establish design tokens, typography, component families, chart grammar, spacing, and interaction rules from the accepted concept.
 5. Define and test the canonical data schema and derivation logic.
 6. Repair and automate the ingestion pipeline.
-7. Implement the application in vertical slices, starting with the Regional Overview and Country Profile.
+7. Implement the application in vertical slices, starting with the Regional Overview and Country Profile .
 8. Add comparison, priority, methodology, sharing, and export capabilities.
 9. Verify the real rendered interface with browser screenshots against the accepted concepts at desktop, tablet, and mobile sizes.
 10. Run functional, analytical, accessibility, print, and performance tests before handoff.

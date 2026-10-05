@@ -8,7 +8,7 @@
 - [x] Add transparent regional action agenda
 - [x] Replace synthetic CSV downloads with real download links and a clipboard fallback
 - [x] Add workspace-specific print briefing structure
-- [x] Update occupied Palestinian territory naming and caveats
+- [x] Update Occupied Palestinian territory naming and caveats
 - [x] Expand methodology and action-template governance
 - [x] Run calculation, browser, accessibility, responsive, and PDF QC
 
@@ -21,7 +21,7 @@
 - [x] Replace the ECharts radar with a keyboard-focusable SVG profile and style-faithful legend.
 - [x] Restore actual-unit health-context bullet rows with a regional-median marker.
 - [x] Add income, conflict-status, and all-region peer modes with fallback and URL state.
-- [x] Expand Methodology & Data Quality with scope, calculations, indicator dictionary, source registry, quality matrix, limitations, and downloads.
+- [x] Expand Methodology & Data quality with scope, calculations, indicator dictionary, source registry, quality matrix, limitations, and downloads.
 - [x] Add panel-level CSV controls, lazy workspace loading, RTL-safe rules, reduced-motion behavior, and print styles.
 - [x] Test overview, context, country, and methodology workspaces at desktop, tablet, and mobile widths.
 
@@ -41,7 +41,7 @@
 
 - Scope: 21/21 countries report a SPAR composite; regional median 76; 7 below 60.
 - Conflict-affected: n=8, median 41. Other settings: n=13, median 84.
-- Detailed capacity coverage: 20/21 countries; occupied Palestinian territory: 0/14 included domains in the queried WHO detailed-capacity dataset.
+- Detailed capacity coverage: 20/21 countries; Occupied Palestinian territory: 0/14 included domains in the queried WHO detailed-capacity dataset.
 - Reported displaced people present: 29,027,911 (refugees + asylum-seekers + IDPs), UNHCR 2025 snapshot.
 - Missing values are excluded rather than represented as zero. Quartiles use linear interpolation and ties use competition ranking.
 
@@ -52,10 +52,10 @@
 - `python3 scripts/validate_data.py public/data.json`: validated 21 countries.
 - `npm run build`: TypeScript and Vite production build passed with workspace-level lazy chunks.
 - In-app browser checks found no console errors or document overflow at 1,440 px and 390 px; a tablet overflow finding at 768 px was fixed and rechecked.
-- Headless Chromium render inspection covered all five workspaces at desktop, tablet, and mobile widths, including long Country Profile and occupied Palestinian territory states.
+- Headless Chromium render inspection covered all five workspaces at desktop, tablet, and mobile widths, including long Country Profile  and Occupied Palestinian territory states.
 - A4 PDFs were rendered for all five workspaces. Overview produced 3 pages, Context 3 after the print-width correction, Country 6 after the print-width correction, About 2, and Methodology 4; sampled pages were rasterized and visually inspected for hierarchy and clipping.
 - Legacy `view=situation` canonicalized to `view=overview`; legacy `foundation` state is tolerated but not emitted.
-- Direct occupied Palestinian territory review confirmed explicit unavailable capacity panels, no zero-valued radar, and no generated action candidates.
+- Direct Occupied Palestinian territory review confirmed explicit unavailable capacity panels, no zero-valued radar, and no generated action candidates.
 
 ## Remaining non-material constraint
 

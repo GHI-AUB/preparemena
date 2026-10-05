@@ -183,3 +183,7 @@
 @media print{.pathway{grid-template-columns:repeat(5,1fr)}.pathway article{border-bottom:0}}
 
 .brand-logo{width:75px;height:auto;object-fit:contain;background:#fff;border-radius:8px;padding:6px 8px;margin:0 auto;display:block}
+
+.briefing-header{display:none}
+.topbar-view{font-size:13px;font-weight:600;color:var(--teal);background:color-mix(in srgb,var(--teal) 10%,transparent);border:1px solid color-mix(in srgb,var(--teal) 25%,transparent);border-radius:20px;padding:3px 12px;letter-spacing:.01em}
+@media print{.briefing-header{display:block}}

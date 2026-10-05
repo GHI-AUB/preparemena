@@ -52,7 +52,7 @@ export function Shell({ view, setView, generated, children, onBriefing, theme, s
     </aside>
     <div className="app-main">
       <header className="topbar">
-        <div><strong>{t.product}</strong><span className="divider" /> <span>{t.navigation[view]}</span></div>
+        <div><strong>{t.product}</strong><span className="divider" /> <span className="topbar-view">{t.navigation[view]}</span></div>
         <div className="top-actions">
           <span className="freshness">{t.topbar.dataRefreshed} <b>{new Date(generated).toLocaleDateString(dateLocale, { day: '2-digit', month: 'short', year: 'numeric' })}</b></span>
           <button className="text-button icon-button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? t.topbar.themeToLight : t.topbar.themeToDark} title={theme === 'dark' ? t.topbar.themeToLight : t.topbar.themeToDark}>{theme === 'dark' ? <Sun /> : <Moon />}</button>

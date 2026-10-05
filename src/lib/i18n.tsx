@@ -7,7 +7,7 @@ export function fmt(template: string, vars: Record<string, string | number>): st
 const en = {
   product: 'PREPARE MENA',
   navigation: {
-    overview: 'Regional overview',
+    overview: 'Regional Overview',
     context: 'Context & Pressures',
     country: 'Country Profile ',
     about: 'About',
@@ -64,7 +64,7 @@ const en = {
     body: 'Reset or broaden the filters. No missing observation has been substituted with zero.',
   },
   overview: {
-    title: 'Regional overview',
+    title: 'Regional Overview',
     findingBelow: '{n} of {total} reporting countries score below 60.',
     findingNone: 'No reporting country scores below 60.',
     findingUse: 'Use this overview to identify where reported capacity warrants closer country-specific review.',

@@ -77,8 +77,8 @@ function OverviewPdf({ data, countries, filters }: PdfProps) {
   const capacityRows = capacityDistributions(data, countries)
   const agenda = capacityRows.slice(0, 3)
   return <>
-    <PageShell title="Regional overview" context={context} generated={data.meta.generated}>
-      <Text style={styles.h1}>Regional overview</Text>
+    <PageShell title="Regional Overview" context={context} generated={data.meta.generated}>
+      <Text style={styles.h1}>Regional Overview</Text>
       <MetricGrid items={[
         ['Regional median', `${num(median(scored.map(c => c.ihr_composite)))}/100`, `${scored.length} reporting countries`],
         ['Below 60', String(scored.filter(c => (c.ihr_composite ?? 100) < 60).length), 'reported SPAR composite'],
@@ -241,5 +241,5 @@ function filterLabel(filters: Filters) {
 function formatDate(value: string) { return new Date(value).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) }
 function num(value: number | null) { return value == null ? '-' : value.toFixed(0) }
 function formatNumber(value: number) { return new Intl.NumberFormat('en', { maximumFractionDigits: 1 }).format(value) }
-function viewTitle(view: AppView) { return ({ overview: 'Regional overview', context: 'Context & Pressures', country: 'Country Profile ', about: 'About', methodology: 'Methodology & Data quality' } as Record<AppView, string>)[view] }
+function viewTitle(view: AppView) { return ({ overview: 'Regional Overview', context: 'Context & Pressures', country: 'Country Profile ', about: 'About', methodology: 'Methodology & Data quality' } as Record<AppView, string>)[view] }
 function sourceName(key: string) { return ({ who_composite: 'WHO SPAR composite', who_capacities: 'WHO SPAR capacities', world_bank: 'World Bank indicators', unhcr: 'UNHCR displacement', conflict_classification: 'Conflict classification' } as Record<string, string>)[key] ?? key }

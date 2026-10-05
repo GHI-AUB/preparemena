@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 
 test('regional overview renders metrics, map panel, and digest', async ({ page }) => {
   await page.goto('/?view=overview')
-  await expect(page.getByRole('heading', { name: 'Regional overview' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Regional Overview' })).toBeVisible()
   await expect(page.locator('.metric').first()).toBeVisible()
   await expect(page.getByText('Preparedness across MENA')).toBeVisible()
   await expect(page.getByText('What changed')).toBeVisible()
@@ -14,7 +14,7 @@ test('priority table navigates to Country Profile  and back button returns', asy
   await page.locator('.priority-table tbody tr').first().click()
   await expect(page.getByRole('heading', { name: 'Country Profile ' })).toBeVisible()
   await page.goBack()
-  await expect(page.getByRole('heading', { name: 'Regional overview' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Regional Overview' })).toBeVisible()
 })
 
 test('country picker filters and switches country', async ({ page }) => {

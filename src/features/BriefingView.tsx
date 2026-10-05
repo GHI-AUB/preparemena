@@ -55,7 +55,7 @@ function OverviewBrief({ data, countries }: { data: Dataset; countries: Country[
   const agenda = capacityRows.slice(0, 3)
   return <>
     <section className="briefing-page">
-      <h1>Regional overview</h1>
+      <h1>Regional Overview</h1>
       <MetricGrid items={[
         ['Regional median', `${fmt(median(scored.map(c => c.ihr_composite)))}/100`, `${scored.length} reporting countries`],
         ['Below 60', String(scored.filter(c => (c.ihr_composite ?? 100) < 60).length), 'reported SPAR composite'],
@@ -202,5 +202,5 @@ function capacityDistributions(data: Dataset, countries: Country[]) {
 function formatDate(value: string) { return new Date(value).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) }
 function fmt(value: number | null) { return value == null ? '—' : value.toFixed(0) }
 function formatNumber(value: number) { return new Intl.NumberFormat('en', { maximumFractionDigits: 1 }).format(value) }
-function viewTitle(view: View) { return ({ overview: 'Regional overview', context: 'Context & Pressures', country: 'Country Profile ', about: 'About', methodology: 'Methodology & Data quality' } as Record<View, string>)[view] }
+function viewTitle(view: View) { return ({ overview: 'Regional Overview', context: 'Context & Pressures', country: 'Country Profile ', about: 'About', methodology: 'Methodology & Data quality' } as Record<View, string>)[view] }
 function sourceName(key: string) { return ({ who_composite: 'WHO SPAR composite', who_capacities: 'WHO SPAR capacities', world_bank: 'World Bank indicators', unhcr: 'UNHCR displacement', conflict_classification: 'Conflict classification' } as Record<string, string>)[key] ?? key }
